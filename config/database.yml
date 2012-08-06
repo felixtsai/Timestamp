@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: Timestamp_development
+  pool: 5
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: Timestamp_test
+  pool: 5
+  host: localhost
+  port: 5432
+
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: Timestamp_production
+#   pool: 5
