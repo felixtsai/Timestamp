@@ -10,9 +10,15 @@ class AfterschoolClassesController < ApplicationController
   def create
     @afterschool_class = AfterschoolClass.new(params[:afterschool_class])
     if @afterschool_class.save
-      redirect_to afterschool_classes_path, :success => "Class successfully created!"
+      flash[:success] = "Class successfully created!"
+      redirect_to @afterschool_class
     else
-      render :new, :error => "Could not create object!"
+      flash.now[:error] = "Could not create object!"
+      render :new
     end
+  end
+
+  def show
+    @afterschool_class = AfterschoolClass.find(params[:id])
   end
 end

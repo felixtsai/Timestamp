@@ -4,6 +4,8 @@
     = f.fields_for :teachers do |builder|
       %h4 Teacher
       %div
+        = builder.select :salutation, ["Mr.", "Mrs.", "Ms."], :prompt => true
+
         = builder.label :first_name, "First Name"
         = builder.text_field :first_name
         %br
