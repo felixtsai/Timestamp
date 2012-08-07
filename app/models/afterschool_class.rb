@@ -4,6 +4,7 @@ class AfterschoolClass < ActiveRecord::Base
   has_many :students
   has_many :teachers
   belongs_to :grade_level
+  has_many :sessions
 
   validates_presence_of :grade_level
   validates_presence_of :teachers

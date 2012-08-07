@@ -11,8 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807190639) do
 
+ActiveRecord::Schema.define(:version => 20120807200650) do
   create_table "afterschool_classes", :force => true do |t|
     t.integer  "grade_level_id"
     t.datetime "created_at",     :null => false
@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(:version => 20120807190639) do
   end
 
   create_table "assignments", :force => true do |t|
-    t.integer  "day_class_id"
     t.string   "description"
     t.date     "due_date"
     t.decimal  "completion_percentage"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "subject_id"
+    t.integer  "grade_level_id"
   end
 
   create_table "attendances", :force => true do |t|
@@ -34,22 +35,6 @@ ActiveRecord::Schema.define(:version => 20120807190639) do
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "classes_students", :force => true do |t|
-    t.integer  "student_id"
-    t.integer  "day_class_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "day_classes", :force => true do |t|
-    t.string   "name"
-    t.integer  "subject_id"
-    t.integer  "grade_level_id"
-    t.integer  "teacher_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
   end
 
   create_table "grade_levels", :force => true do |t|

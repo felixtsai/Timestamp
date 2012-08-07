@@ -3,5 +3,6 @@ class Student < ActiveRecord::Base
 
   belongs_to :grade_level
   belongs_to :afterschool_class
-  has_many :sessions, :through => :attendance
+  has_many :assignments, through: :student_assignments
+  has_many :sessions, through: :attendances
 end
