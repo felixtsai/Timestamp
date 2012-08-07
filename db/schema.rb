@@ -11,12 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807032823) do
+ActiveRecord::Schema.define(:version => 20120807051335) do
 
   create_table "afterschool_classes", :force => true do |t|
     t.integer  "grade_level_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "day_class_id"
+    t.string   "description"
+    t.date     "due_date"
+    t.decimal  "completion_percentage"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "attendances", :force => true do |t|
+    t.integer  "session_id"
+    t.integer  "student_id"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "classes_students", :force => true do |t|
@@ -39,6 +56,22 @@ ActiveRecord::Schema.define(:version => 20120807032823) do
     t.string   "year"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.integer  "afterschool_class_id"
+    t.date     "date"
+    t.datetime "start_time"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  create_table "student_assignments", :force => true do |t|
+    t.datetime "completion_time"
+    t.integer  "student_id"
+    t.integer  "assignment_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "students", :force => true do |t|

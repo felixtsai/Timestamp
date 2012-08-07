@@ -5,4 +5,5 @@ describe DayClass do
   it { should belong_to :teacher}
   it { should belong_to :grade_level }
   it { should belong_to :subject}
+  it { should have_many :assignments}
 end
