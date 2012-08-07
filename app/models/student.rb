@@ -3,4 +3,5 @@ class Student < ActiveRecord::Base
 
   belongs_to :grade_level
   belongs_to :afterschool_class
+  has_many :day_classes, through: :classes_students
 end

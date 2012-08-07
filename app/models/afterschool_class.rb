@@ -3,4 +3,5 @@ class AfterschoolClass < ActiveRecord::Base
 
   has_many :students
   has_one :teacher
+  belongs_to :grade_level
 end
