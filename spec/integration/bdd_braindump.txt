@@ -1,0 +1,8 @@
+as a user, I should be able to...
+
+// create and add an afterschool section with teacher and grade
+
+// add students to an afterschool section
+
+// create student profile with class schedule
+
