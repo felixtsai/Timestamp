@@ -5,5 +5,8 @@ class AfterschoolClass < ActiveRecord::Base
   has_many :teachers
   belongs_to :grade_level
 
+  validates_presence_of :grade_level
+  validates_presence_of :teachers
+
   accepts_nested_attributes_for :teachers
 end

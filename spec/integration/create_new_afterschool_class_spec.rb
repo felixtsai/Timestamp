@@ -16,19 +16,21 @@ describe "afterschool class creation" do
 
   it 'throws an error when grade level is not given' do
     visit "/afterschool_classes/new"
-    select('Add Teacher', :from => 'afterschool_class[teacher]')
-    fill_in "teacher[name]", :with => "Mr. Smith"
+    select('Mr.', :from => 'afterschool_class[teachers_attributes][0][salutation]')
+    fill_in "afterschool_class[teachers_attributes][0][first_name]", :with => "John"
+    fill_in "afterschool_class[teachers_attributes][0][last_name]", :with => "Smith"
     click_button "Create Class"
-    page.should have_content "Please add a grade level!"
+    page.should have_content "Cannot create class without teacher or grade level!"
+  end
+
+  it 'throws an error when teacher is not given' do
+    visit "/afterschool_classes/new"
+    select('6th Grade', :from => 'afterschool_class[grade_level_id]')
+    save_and_open_page
+    click_button "Create Class"
+    page.should have_content "Cannot create class without teacher or grade level!"
   end
 end
-#   it 'throws an error when teacher is not given' do
-#     visit "/afterschool_classes/new"
-#     select('6th Grade', :from => 'afterschool_class[grade_level]')
-#     click_button "Create Class"
-#     page.should have_content "Please add a teacher!"
-#   end
-#
 #   it 'does not allow me to create the same section twice' do
 #     visit "/afterschool_classes/new"
 #     select('Add Teacher', :from => 'afterschool_class[teacher]')
