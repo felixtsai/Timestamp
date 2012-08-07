@@ -1,0 +1,2 @@
+module AfterschoolClassesHelper
+end
