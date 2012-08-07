@@ -11,8 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20120807200650) do
+
   create_table "afterschool_classes", :force => true do |t|
     t.integer  "grade_level_id"
     t.datetime "created_at",     :null => false

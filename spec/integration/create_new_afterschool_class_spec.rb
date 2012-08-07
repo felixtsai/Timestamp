@@ -26,7 +26,6 @@ describe "afterschool class creation" do
   it 'throws an error when teacher is not given' do
     visit "/afterschool_classes/new"
     select('6th Grade', :from => 'afterschool_class[grade_level_id]')
-    save_and_open_page
     click_button "Create Class"
     page.should have_content "Cannot create class without teacher or grade level!"
   end
