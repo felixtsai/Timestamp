@@ -1,9 +1,14 @@
 %h1 Create New Class
 %div
   = form_for @afterschool_class do |f|
-    = f.fields_for :teacher do |builder|
-      = builder.label :name, "Teacher Name"
-      = builder.text_field :name
+    = f.fields_for :teachers do |builder|
+      %h4 Teacher
+      %div
+        = builder.label :first_name, "First Name"
+        = builder.text_field :first_name
+        %br
+        = builder.label :last_name, "Last Name"
+        = builder.text_field :last_name
     %br
     = f.label :grade, "Select Grade Level"
     = f.collection_select(:grade_level_id, GradeLevel.find(:all), :id, :year, :prompt => true)
