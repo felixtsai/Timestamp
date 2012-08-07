@@ -12,7 +12,7 @@ class AfterschoolClassesController < ApplicationController
     if @afterschool_class.save
       redirect_to afterschool_classes_path, :success => "Class successfully created!"
     else
-      render :new
+      render :new, :error => "Could not create object!"
     end
   end
 end
