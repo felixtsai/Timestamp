@@ -1,0 +1,85 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/apprentice/Desktop/Timestamp/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/helpers/afterschool_classes_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/controllers/afterschool_classes_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/models/afterschool_class.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/models/classes_students.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/models/day_class.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/models/grade_level.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/models/student.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/models/subject.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/Timestamp/app/models/teacher.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1344314391
+  }
+}
