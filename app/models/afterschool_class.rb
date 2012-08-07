@@ -4,6 +4,7 @@ class AfterschoolClass < ActiveRecord::Base
   has_many :students
   has_many :teachers
   belongs_to :grade_level
+  has_many :sessions
 
   accepts_nested_attributes_for :teachers
 end
