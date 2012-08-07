@@ -4,8 +4,7 @@ describe "afterschool class creation" do
   it 'allows me to create an afterschool class with a teacher and grade level' do
     visit "/afterschool_classes/"
     click_link "Add Class"
-    select('Add Teacher', :from => 'afterschool_class[teacher]')
-    fill_in "teacher[name]", :with => "Mr. Smith"
+    fill_in "afterschool_class[teachers][name]", :with => "Mr. Smith"
     select('6th Grade', :from => 'afterschool_class[grade_level]')
     click_button "Create Class"
     page.should have_content "Class successfully created!"
