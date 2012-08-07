@@ -13,7 +13,7 @@ class AfterschoolClassesController < ApplicationController
       flash[:success] = "Class successfully created!"
       redirect_to @afterschool_class
     else
-      flash.now[:error] = "Cannot create class without teacher or grade level!"
+      flash.now[:error] = "Not a valid class!"
       render :new
     end
   end

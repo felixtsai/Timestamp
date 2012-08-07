@@ -6,8 +6,7 @@ class AfterschoolClass < ActiveRecord::Base
   belongs_to :grade_level
   has_many :sessions
 
-  validates_presence_of :grade_level
-  validates_presence_of :teachers
+  validates_presence_of :grade_level, :teachers
   validate :teacher_existence
 
   accepts_nested_attributes_for :teachers
