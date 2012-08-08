@@ -1,5 +1,7 @@
 class AfterschoolClassesController < ApplicationController
   def index
+    @afterschool_classes = AfterschoolClass.all
+    @session = Session.new
   end
 
   def new
