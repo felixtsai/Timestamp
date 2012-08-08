@@ -4,7 +4,9 @@ class Student < ActiveRecord::Base
   delegate :grade_level, :to => :afterschool_class
   belongs_to :afterschool_class, :inverse_of => :students
   has_many :assignments, through: :student_assignments
+  has_many :attendances
   has_many :sessions, through: :attendances
+
 
   validates_presence_of :first_name, :last_name, :afterschool_class
 

@@ -7,5 +7,11 @@
   %h2.students Student Roster
   - @session.afterschool_class.students.each do |student|
     = student.first_name + " " + student.last_name
-  %h2= link_to "End Today's Session", afterschool_class_session_path(@session), method: :delete
+    %br
+    - if !student.attendances.find_by_session_id(@session.id)
+      = link_to "Sign in", attendances_path(attendance: {session_id: @session.id, student_id: student.id}), method: :post
+    - else
+      ALREADY SIGNED IN
+  %br
+  %h2= link_to "Delete Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}
 
