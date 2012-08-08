@@ -1,1 +1,12 @@
 %h2= link_to 'Add Class', new_afterschool_class_path
+%ul
+  Afterschool Class List
+  - @afterschool_classes.each do |afterschool_class|
+    %li
+      Class by
+      =afterschool_class.teachers.first.first_name
+      -if afterschool_class.sessions.all.select {|session| session.date == Time.now.to_date}.empty?
+        =link_to "Start class" , afterschool_class_sessions_path(afterschool_class.id) ,  method: :post
+      -else
+        [Class started today]
+

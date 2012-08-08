@@ -1,0 +1,11 @@
+%h2.teacher_name
+  Teacher:
+  = @session.afterschool_class.teachers.first.first_name + " " + @session.afterschool_class.teachers.first.last_name
+  %h2.grade_level
+    Grade:
+    = @session.afterschool_class.grade_level.year
+  %h2.students Student Roster
+  - @session.afterschool_class.students.each do |student|
+    = student.first_name + " " + student.last_name
+  %h2= link_to "End Today's Session", afterschool_class_session_path(@session), method: :delete
+

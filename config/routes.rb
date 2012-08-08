@@ -1,7 +1,8 @@
 Timestamp::Application.routes.draw do
 
-  resources :afterschool_classes
-
+  resources :afterschool_classes do
+    resources :sessions
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

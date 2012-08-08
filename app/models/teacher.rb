@@ -5,4 +5,5 @@ class Teacher < ActiveRecord::Base
   validates_uniqueness_of :first_name, :scope => :last_name
 
   belongs_to :afterschool_class, :inverse_of => :teachers
+
 end
