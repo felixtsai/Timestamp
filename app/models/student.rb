@@ -13,5 +13,11 @@ class Student < ActiveRecord::Base
   # def grade_level
   #   self.grade_level
   # end
+  def signed_in?(session_id)
+    self.attendances.find_by_session_id(session_id)
+  end
 
+  def current_class_status(session_id)
+    self.attendances.find_by_session_id(session_id).status
+  end
 end

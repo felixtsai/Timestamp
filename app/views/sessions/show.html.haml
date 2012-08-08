@@ -5,13 +5,20 @@
     Grade:
     = @session.afterschool_class.grade_level.year
   %h2.students Student Roster
-  - @session.afterschool_class.students.each do |student|
-    = student.first_name + " " + student.last_name
-    %br
-    - if !student.attendances.find_by_session_id(@session.id)
-      = link_to "Sign in", attendances_path(attendance: {session_id: @session.id, student_id: student.id}), method: :post
-    - else
-      ALREADY SIGNED IN
+  %ul
+    - @session.afterschool_class.students.each do |student|
+      %li
+        = student.first_name + " " + student.last_name
+        - if !student.signed_in?(@session.id)
+          = link_to "Sign in", attendances_path(attendance: {session_id: @session.id, student_id: student.id}), method: :post
+        - else
+          -if student.current_class_status(@session.id) == "Late"
+            %span.badge.badge-important
+              Late
+          -else
+            %span.badge.badge-success
+              On time
+
   %br
   %h2= link_to "Delete Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}
 

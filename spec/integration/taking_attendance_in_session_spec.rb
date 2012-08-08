@@ -17,7 +17,6 @@ describe "taking attendance for kids" do
     click_link "Start class"
     page.should have_content "Sign in"
     click_link "Sign in"
-    page.should have_content
     page.should have_content "Austin Wang\tHERE"
   end
 
