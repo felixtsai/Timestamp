@@ -1,6 +1,6 @@
 class AfterschoolClassesController < ApplicationController
   def index
-    @afterschool_classes = AfterschoolClass.all
+    @afterschool_classes = AfterschoolClass.find(:all)
     @session = Session.new
   end
 

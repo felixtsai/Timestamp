@@ -1,6 +1,6 @@
 %h1 Create New Class
 %div
-  = form_for @afterschool_class, :validate => true do |f|
+  = form_for @afterschool_class do |f|
     - if @afterschool_class.errors.any?
       #error_explanation
         .alert.alert-error
@@ -8,32 +8,16 @@
         %ul
           -@afterschool_class.errors.full_messages.each do |msg|
             %li= msg
+    .row
+      .span6
+        =render :partial => "teacher_form", :locals => { :f => f }
+        = f.submit "Create Class", :class => "btn btn-large btn-success"
 
-    = f.fields_for :teachers do |builder|
-      %h4 Teacher
-      %div
-        = builder.select :salutation, ["Mr.", "Mrs.", "Ms."], :prompt => true
+      .span4
+        .add-student-form
+          = link_to '#' do
+            %i.icon-plus-sign
+            %span
+              Add Student
+        =render :partial => "student_form", :locals => { :f => f }
 
-        = builder.label :first_name, "First Name"
-        = builder.text_field :first_name, :placeholder => "First Name"
-        %br
-        = builder.label :last_name, "Last Name"
-        = builder.text_field :last_name, :placeholder => "Last Name"
-    %br
-    = f.label :grade, "Select Grade Level"
-    = f.collection_select(:grade_level_id, GradeLevel.find(:all), :id, :year, :prompt => true)
-    %br
-
-    = link_to "+Add Student"
-    = f.fields_for :students do |builder|
-      %h4 Student
-      %div
-        = builder.label :first_name, "First Name"
-        = builder.text_field :first_name, :placeholder => "First Name"
-
-        = builder.label :first_name, "Last Name"
-        = builder.text_field :last_name, :placeholder => "Last Name"
-
-        = builder.hidden_field :grade_level_id, :value => builder.object.grade_level_id
-
-    = f.submit "Create Class", :class => "btn btn-large btn-success"

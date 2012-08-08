@@ -9,7 +9,7 @@ describe "starting a session of an afterschool class" do
     fill_in "afterschool_class[teachers_attributes][0][last_name]", :with => "Smith"
     select('6th Grade', :from => 'afterschool_class[grade_level_id]')
     click_button "Create Class"
-    AfterschoolClass.last.students.create(first_name: "Austin", last_name: "Wang", grade_level_id: 1)
+    AfterschoolClass.last.students.create(first_name: "Austin", last_name: "Wang")
     visit "/afterschool_classes/"
   end
 
@@ -29,9 +29,10 @@ describe "starting a session of an afterschool class" do
   end
 
   it "should have a delete button that takes you back to the after_school classes index" do
+    click_link "Start class"
     click_link "End Today's Session"
     page.should have_content('Session has been ended')
-    page.should have_content('Afterschool class list')
+    page.should have_content('Afterschool Class List')
   end
 
 end

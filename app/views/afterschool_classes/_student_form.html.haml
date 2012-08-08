@@ -1,0 +1,8 @@
+= f.fields_for :students do |builder|
+  %h4 Student
+  %div
+    = builder.label :first_name, "First Name"
+    = builder.text_field :first_name, :placeholder => "First Name"
+
+    = builder.label :first_name, "Last Name"
+    = builder.text_field :last_name, :placeholder => "Last Name"

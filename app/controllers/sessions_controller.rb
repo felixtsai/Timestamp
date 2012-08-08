@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     Session.find(params[:id]).destroy
+    flash[:success] = "Session has been ended"
     redirect_to afterschool_classes_path
   end
 
