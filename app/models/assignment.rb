@@ -1,5 +1,5 @@
 class Assignment < ActiveRecord::Base
-  attr_accessible :completion_percentage, :day_class_id, :description, :due_date, :subject_id
+  attr_accessible :completion_percentage, :description, :due_date, :subject_id, :grade_level_id
 
   has_many :students, through: :student_assignments
   belongs_to :subject
