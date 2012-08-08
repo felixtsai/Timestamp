@@ -1,5 +1,7 @@
 Timestamp::Application.routes.draw do
 
+  resources :attendances, except: [:new, :edit, :index, :show]
+
   resources :afterschool_classes do
     resources :sessions
   end

@@ -30,9 +30,8 @@ describe "starting a session of an afterschool class" do
 
   it "should have a delete button that takes you back to the after_school classes index" do
     click_link "Start class"
-    click_link "End Today's Session"
+    click_link "Delete Session"
     page.should have_content('Session has been ended')
     page.should have_content('Afterschool Class List')
   end
-
 end
