@@ -1,8 +1,15 @@
 class Student < ActiveRecord::Base
-  attr_accessible :afterschool_class_id, :first_name, :grade_level_id, :last_name
+  attr_accessible :first_name, :last_name, :afterschool_class_id, :grade_level_id
 
-  belongs_to :grade_level
-  belongs_to :afterschool_class
+  delegate :grade_level, :to => :afterschool_class
+  belongs_to :afterschool_class, :inverse_of => :students
   has_many :assignments, through: :student_assignments
   has_many :sessions, through: :attendances
+
+  validates_presence_of :first_name, :last_name, :afterschool_class
+
+  # def grade_level
+  #   self.grade_level
+  # end
+
 end

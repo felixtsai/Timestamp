@@ -20,14 +20,14 @@ describe "afterschool class creation" do
     fill_in "afterschool_class[teachers_attributes][0][first_name]", :with => "John"
     fill_in "afterschool_class[teachers_attributes][0][last_name]", :with => "Smith"
     click_button "Create Class"
-    page.should have_content "Not a valid class!"
+    page.should have_content "Grade level can't be blank"
   end
 
   it 'throws an error when teacher is not given' do
     visit "/afterschool_classes/new"
     select('6th Grade', :from => 'afterschool_class[grade_level_id]')
     click_button "Create Class"
-    page.should have_content "Not a valid class!"
+    page.should have_content "Teachers first name can't be blank"
   end
 
   it 'does not allow me to create the same section twice' do
@@ -43,7 +43,19 @@ describe "afterschool class creation" do
     fill_in "afterschool_class[teachers_attributes][0][last_name]", :with => "Smith"
     select('6th Grade', :from => 'afterschool_class[grade_level_id]')
     click_button "Create Class"
-    page.should have_content "Not a valid class!"
+    page.should have_content "Teachers first name has already been taken"
+  end
+
+  it 'allows me to add students to create an afterschool class' do
+    visit "/afterschool_classes/new"
+    select('Mr.', :from => 'afterschool_class[teachers_attributes][0][salutation]')
+    fill_in "afterschool_class[teachers_attributes][0][first_name]", :with => "John"
+    fill_in "afterschool_class[teachers_attributes][0][last_name]", :with => "Smith"
+    select('6th Grade', :from => 'afterschool_class[grade_level_id]')
+    click_link "+Add Student"
+    fill_in "afterschool_class[students_attributes][0][first_name]", :with => "John"
+    fill_in "afterschool_class[students_attributes][0][last_name]", :with => "Doe"
+    click_button "Create Class"
   end
 end
 #

@@ -5,6 +5,7 @@ class AfterschoolClassesController < ApplicationController
   def new
     @afterschool_class = AfterschoolClass.new
     @afterschool_class.teachers.build
+    @afterschool_class.students.build
   end
 
   def create
@@ -13,7 +14,6 @@ class AfterschoolClassesController < ApplicationController
       flash[:success] = "Class successfully created!"
       redirect_to @afterschool_class
     else
-      flash.now[:error] = "Not a valid class!"
       render :new
     end
   end

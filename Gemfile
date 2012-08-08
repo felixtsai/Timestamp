@@ -9,6 +9,7 @@ gem 'thin'
 gem 'haml'
 gem 'haml-rails'
 gem 'devise'
+gem 'client_side_validations'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
