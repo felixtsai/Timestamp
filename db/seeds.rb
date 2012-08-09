@@ -9,3 +9,9 @@
 GradeLevel.find_or_create_by_year("6th Grade")
 GradeLevel.find_or_create_by_year("7th Grade")
 GradeLevel.find_or_create_by_year("8th Grade")
+
+Subject.find_or_create_by_name("English Language Arts (ELA)")
+Subject.find_or_create_by_name("Math")
+Subject.find_or_create_by_name("Social Studies")
+Subject.find_or_create_by_name("Science")
+Subject.find_or_create_by_name("Extra Credit")

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Student do
   it { should have_many :sessions }
+  it { should have_many :student_assignments }
   it { should have_many :assignments }
   it { should belong_to :afterschool_class }
 

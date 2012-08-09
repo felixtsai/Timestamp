@@ -1,0 +1,14 @@
+%h1 Create new assignment
+= form_tag('/assignments')
+
+= collection_select(:assignment, :grade_level_id, GradeLevel.find(:all), :id, :year, :prompt => "Select grade level")
+= collection_select(:assignment, :subject_id, Subject.find(:all), :id, :name, :prompt => "Select subject")
+%br
+%br
+
+= text_field_tag("assignment[0][description]", nil, :placeholder => "Enter new assignment")
+%br
+= date_select("assignment[0]", "due_date", :start_year => 2012, :order => [:month, :day, :year], :prompt => true)
+%br
+%br
+= submit_tag("Create Assignment", :class => "btn btn-large btn-success")
