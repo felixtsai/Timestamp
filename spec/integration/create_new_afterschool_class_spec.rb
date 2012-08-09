@@ -52,6 +52,7 @@ describe "afterschool class creation" do
     fill_in "afterschool_class[teachers_attributes][0][first_name]", :with => "John"
     fill_in "afterschool_class[teachers_attributes][0][last_name]", :with => "Smith"
     select('6th Grade', :from => 'afterschool_class[grade_level_id]')
+    click_link "Add Student"
     fill_in "afterschool_class[students_attributes][0][first_name]", :with => "John"
     fill_in "afterschool_class[students_attributes][0][last_name]", :with => "Doe"
     click_button "Create Class"
