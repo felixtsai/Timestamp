@@ -1,4 +1,5 @@
 %h1 Create new assignment
+
 = form_tag('/assignments')
 
 = collection_select(:assignment, :grade_level_id, GradeLevel.find(:all), :id, :year, :prompt => "Select grade level")
@@ -6,9 +7,17 @@
 %br
 %br
 
+.add-assignment-form
+  = link_to '#' do
+    %i.icon-plus-sign
+    %span
+      Add Assignment
+
 = text_field_tag("assignment[0][description]", nil, :placeholder => "Enter new assignment")
 %br
-= date_select("assignment[0]", "due_date", :start_year => 2012, :order => [:month, :day, :year], :prompt => true)
+
+= label_tag("Due Date (default is tomorrow)")
+= text_field_tag("assignment[0][due_date]", (Date.today + 1.day).strftime("%m/%d/%y"), :class => "assignment_due_date")
 %br
 %br
 = submit_tag("Create Assignment", :class => "btn btn-large btn-success")

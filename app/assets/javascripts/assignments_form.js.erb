@@ -1,0 +1,36 @@
+$(document).ready(function() {
+  var count = '1';
+
+  $('.add-assignment-form a').on('click', function () {
+
+
+
+
+
+$(this).after("</br><select id='assignment_'+count+'_due_date_2i' name='assignment["+count+"][due_date(2i)]'>")
+$(this).after("<option value=''>Month</option>")
+$(this).after("<option value='1'>January</option>")
+$(this).after("<option value='2'>February</option>")
+$(this).after("<option value='3'>March</option>")
+$(this).after("<option value='4'>April</option>")
+$(this).after("<option value='5'>May</option>")
+$(this).after("<option value='6'>June</option>")
+$(this).after("<option value='7'>July</option>")
+$(this).after("<option value='8'>August</option>")
+$(this).after("<option value='9'>September</option>")
+$(this).after("<option value='10'>October</option>")
+$(this).after("<option value='11'>November</option>")
+$(this).after("<option value='12'>December</option>")
+$(this).after("</select>")
+$(this).after("</br><input id='assignment_"+count+"_description' name='assignment["+count+"][description]' placeholder='Enter new assignment' type='text'>")
+
+
+    // $(this).after("<input id='afterschool_class_students_attributes_"+count+"_last_name' name='afterschool_class[students_attributes]["+count+"][last_name]' placeholder='Last Name' size='30' type='text'>")
+    // $(this).after("<label for='afterschool_class_students_attributes_"+count+"_last_name'>Last Name</label>")
+    // $(this).after("<input id='afterschool_class_students_attributes_"+count+"_first_name' name='afterschool_class[students_attributes]["+count+"][first_name]' placeholder='First Name' size='30' type='text'>")
+    // $(this).after("<label for='afterschool_class_students_attributes_"+count+"_first_name'>First Name</label>")
+    // $(this).after("<h4>Student</h4>")
+    //
+    count = parseInt(count) + 1
+  });
+});
