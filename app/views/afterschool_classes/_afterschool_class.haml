@@ -1,0 +1,10 @@
+%tr
+  %td
+    =afterschool_class.teachers.first.first_name + " " + afterschool_class.teachers.first.last_name
+  %td
+    -if afterschool_class.sessions.all.select {|session| session.date == Time.now.to_date}.empty?
+      %span.label.label-success
+        =link_to "Start class" , afterschool_class_sessions_path(afterschool_class.id) ,  method: :post
+    -else
+      %span.label.label-info
+        =link_to "Enter class" , afterschool_class_session_path(afterschool_class.id, afterschool_class.sessions.find_by_date(Time.now.to_date))

@@ -1,0 +1,23 @@
+%tr
+  %td= student.first_name + " " + student.last_name
+  %td
+    - if !student.find_session_attendance(@session.id)
+      %span.label
+        = link_to "Sign in", attendances_path(attendance: {session_id: @session.id, student_id: student.id}), method: :post
+      - else
+        -if student.current_class_status(@session.id) == "Late"
+          %div.btn-group
+            %a.btn.btn-mini.btn-danger.dropdown-toggle(data-toggle = "dropdown" href = "#")
+              Late
+              %span.caret
+            %ul.dropdown-menu
+              %li=link_to "On time", attendance_path(student.find_session_attendance(@session.id), attendance: {status: "On time"}), method: :put
+              %li=link_to "Absent", attendance_path(student.find_session_attendance(@session.id)), method: :delete
+        -else
+          %div.btn-group
+            %a.btn.btn-mini.btn-success.dropdown-toggle(data-toggle = "dropdown" href = "#")
+              On time
+              %span.caret
+            %ul.dropdown-menu
+              %li=link_to "Late", attendance_path(student.find_session_attendance(@session.id), attendance: {status: "Late"}), method: :put
+              %li=link_to "Absent", attendance_path(student.find_session_attendance(@session.id)), method: :delete
