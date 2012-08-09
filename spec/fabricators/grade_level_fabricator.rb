@@ -1,3 +1,3 @@
 Fabricator(:grade_level) do
-  year "MyString"
+  year "6th Grade"
 end

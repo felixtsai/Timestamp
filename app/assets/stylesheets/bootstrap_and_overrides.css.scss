@@ -23,3 +23,13 @@ body {
 //  @extend .control-group;
   @extend .error;
 }
+
+.label a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-group {
+  display:inline-block;
+}
+

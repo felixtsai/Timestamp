@@ -9,16 +9,27 @@
     - @session.afterschool_class.students.each do |student|
       %li
         = student.first_name + " " + student.last_name
-        - if !student.signed_in?(@session.id)
-          = link_to "Sign in", attendances_path(attendance: {session_id: @session.id, student_id: student.id}), method: :post
-        - else
-          -if student.current_class_status(@session.id) == "Late"
-            %span.badge.badge-important
-              Late
-          -else
-            %span.badge.badge-success
-              On time
+        - if !student.find_session_attendance(@session.id)
+          %span.label
+            = link_to "Sign in", attendances_path(attendance: {session_id: @session.id, student_id: student.id}), method: :post
+          - else
+            -if student.current_class_status(@session.id) == "Late"
+              %div.btn-group
+                %a.btn.btn-mini.btn-danger.dropdown-toggle(data-toggle = "dropdown" href = "#")
+                  Late
+                  %span.caret
+                %ul.dropdown-menu
+                  %li=link_to "On time", attendance_path(student.find_session_attendance(@session.id), attendance: {status: "On time"}), method: :put
+                  %li=link_to "Absent", attendance_path(student.find_session_attendance(@session.id)), method: :delete
+            -else
+              %div.btn-group
+                %a.btn.btn-mini.btn-success.dropdown-toggle(data-toggle = "dropdown" href = "#")
+                  On time
+                  %span.caret
+                %ul.dropdown-menu
+                  %li=link_to "Late", attendance_path(student.find_session_attendance(@session.id), attendance: {status: "Late"}), method: :put
+                  %li=link_to "Absent", attendance_path(student.find_session_attendance(@session.id)), method: :delete
 
   %br
-  %h2= link_to "Delete Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}
+  %div= button_to "Delete Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}
 

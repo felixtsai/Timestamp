@@ -1,5 +1,5 @@
 Fabricator(:session) do
-  afterschool_class_id 1
-  date                 "2012-08-06"
-  start_time           "2012-08-06 21:49:24"
+  afterschool_class_id Fabricate(:afterschool_class).id
+  date                 Time.now.to_date
+  start_time           Time.now
 end

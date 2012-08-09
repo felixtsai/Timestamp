@@ -8,10 +8,6 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
   end
 
-  def end
-    redirect_to "http://www.ign.com"
-  end
-
   def edit
   end
 

@@ -5,7 +5,7 @@ class Attendance < ActiveRecord::Base
   before_create :log_status
 
   def log_status
-    if (Time.now - self.session.start_time) > 10.seconds
+    if (Time.now - self.session.start_time) > 1.minutes
       self.status = "Late"
     else
       self.status = "On Time"
