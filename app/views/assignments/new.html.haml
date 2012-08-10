@@ -1,6 +1,13 @@
 %h1 Create new assignment
 
 = form_tag('/assignments')
+- if !@errors.blank?
+  #error_explanation
+    .alert.alert-error
+      ="There were #{ pluralize(@errors.count, "error") } in the last form "
+    %ul
+      -@errors.each do |msg|
+        %li= msg
 
 = collection_select(:assignment, :grade_level_id, GradeLevel.find(:all), :id, :year, :prompt => "Select grade level")
 = collection_select(:assignment, :subject_id, Subject.find(:all), :id, :name, :prompt => "Select subject")
@@ -12,12 +19,12 @@
     %i.icon-plus-sign
     %span
       Add Assignment
-
+%h4 Assignment
 = text_field_tag("assignment[0][description]", nil, :placeholder => "Enter new assignment")
 %br
 
 = label_tag("Due Date (default is tomorrow)")
-= text_field_tag("assignment[0][due_date]", (Date.today + 1.day).strftime("%m/%d/%y"), :class => "assignment_due_date")
+= text_field_tag("assignment[0][due_date]", Date.today + 1.day, :id => "assignment_due_date_0")
 %br
 %br
 = submit_tag("Create Assignment", :class => "btn btn-large btn-success")
