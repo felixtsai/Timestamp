@@ -7,6 +7,8 @@ Timestamp::Application.routes.draw do
   resources :afterschool_classes do
     resources :sessions
   end
+
+  root to: 'afterschool_classes#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

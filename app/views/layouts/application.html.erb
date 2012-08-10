@@ -10,7 +10,11 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <a class="brand" href="#">TimeStampz</a>
+          <%= link_to "TimeStampz", root_path, class: 'brand' %>
+        <ul class="nav">
+          <li><%= link_to "Create Assignments", new_assignment_path %></li>
+          <li><%= link_to "Create Class", new_afterschool_class_path %></li>
+        </ul>
       </div>
     </div>
   </div>
