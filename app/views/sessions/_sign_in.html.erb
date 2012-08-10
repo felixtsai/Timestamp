@@ -1,9 +1,11 @@
 <% if student.current_class_status(session.id) == "Late" %>
   <% btn_type = "btn-danger" %>
   <% status = "Late"  %>
+  <% menu = "On time"%>
 <% else %>
   <% btn_type = "btn-success" %>
   <% status = "On time"  %>
+  <% menu = "Late"%>
 <% end %>
 <div class ='btn-group'>
   <a class='btn btn-mini <%= btn_type %> dropdown-toggle' data-toggle = 'dropdown' href = '#'>
@@ -12,7 +14,7 @@
   </a>
   <ul class='dropdown-menu'>
     <li>
-      <%= link_to "On time", attendance_path(student.find_session_attendance(session.id), attendance: {status: status}), method: :put, remote: :true %>
+      <%= link_to menu, attendance_path(student.find_session_attendance(session.id), attendance: {status: menu}), method: :put, remote: :true, student_id: student.id %>
     </li>
     <li>
       <%= link_to "Absent", attendance_path(student.find_session_attendance(session.id)), method: :delete %>
