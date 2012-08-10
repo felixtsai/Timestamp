@@ -12,6 +12,9 @@ class AttendancesController < ApplicationController
 
   def update
     Attendance.find(params[:id]).update_attributes(params[:attendance])
+    @attendance = Attendance.find(params[:id])
+    @student = @attendance.student
+    @session = @attendance.session
     respond_to do |format|
       format.html {redirect_to :back}
       format.js

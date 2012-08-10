@@ -7,14 +7,14 @@
   <% status = "On time"  %>
   <% menu = "Late"%>
 <% end %>
-<div class ='btn-group'>
+<div class ='btn-group' student_id=<%= student.id %>>
   <a class='btn btn-mini <%= btn_type %> dropdown-toggle' data-toggle = 'dropdown' href = '#'>
     <%= status %>
     <span class='caret'></span>
   </a>
   <ul class='dropdown-menu'>
     <li>
-      <%= link_to menu, attendance_path(student.find_session_attendance(session.id), attendance: {status: menu}), method: :put, remote: :true, student_id: student.id %>
+      <%= link_to menu, attendance_path(student.find_session_attendance(session.id), attendance: {status: menu, student_id: student.id}), method: :put, remote: :true %>
     </li>
     <li>
       <%= link_to "Absent", attendance_path(student.find_session_attendance(session.id)), method: :delete %>
