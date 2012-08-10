@@ -13,9 +13,9 @@ class AfterschoolClassesController < ApplicationController
   def create
     @afterschool_class = AfterschoolClass.new(params[:afterschool_class])
     if @afterschool_class.save
-      students_from_csv
+      students_from_csv if params[:file]
       flash[:success] = "Class successfully created!"
-      redirect_to @afterschool_class
+      redirect_to root_path
     else
       render :new
     end
