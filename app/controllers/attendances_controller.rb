@@ -2,12 +2,20 @@ class AttendancesController < ApplicationController
   def create
     @attendance = Attendance.new(params[:attendance])
     @attendance.save
-    redirect_to :back
+    @student = @attendance.student
+    @session = @attendance.session
+    respond_to do |format|
+        format.html {redirect_to :back}
+        format.js
+    end
   end
 
   def update
     Attendance.find(params[:id]).update_attributes(params[:attendance])
-    redirect_to :back
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
   end
 
   def destroy
