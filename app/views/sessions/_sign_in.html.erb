@@ -17,7 +17,7 @@
       <%= link_to menu, attendance_path(student.find_session_attendance(session.id), attendance: {status: menu, student_id: student.id}), method: :put, remote: :true %>
     </li>
     <li>
-      <%= link_to "Absent", attendance_path(student.find_session_attendance(session.id)), method: :delete %>
+      <%= link_to "Absent", attendance_path(student.find_session_attendance(session.id)), method: :delete, remote: true %>
       </li>
       </ul>
 </div>

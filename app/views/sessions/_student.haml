@@ -2,7 +2,6 @@
   %td= student.first_name + " " + student.last_name
   %td
     - if !student.find_session_attendance(@session.id)
-      %span.label
-        = link_to "Sign in", attendances_path(attendance: {session_id: @session.id, student_id: student.id}), method: :post, remote: :true, student_id: student.id
-      - else
-        = render partial: 'sign_in', locals: {student: student, session: @session}
+      = render partial: 'absent', locals: {student:student, session: @session}
+    - else
+      = render partial: 'sign_in', locals: {student: student, session: @session}
