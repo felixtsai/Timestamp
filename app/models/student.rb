@@ -16,6 +16,10 @@ class Student < ActiveRecord::Base
     student_assignments.select { |s_a| s_a.due_date >= Date.today }
   end
 
+  def outstanding_assignments_count
+    outstanding_assignments.select { |s_a| !s_a.completion_time }.length
+  end
+
   def find_session_attendance(session_id)
     self.attendances.find_by_session_id(session_id)
   end
