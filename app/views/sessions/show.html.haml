@@ -1,11 +1,16 @@
 %h1.teacher_name
   = @session.afterschool_class.teachers.first.first_name + " " + @session.afterschool_class.teachers.first.last_name
 %h3= @session.afterschool_class.grade_level.year
+
 %ul.nav.nav-list
   %li.divider
-%h3 Student Roster
-%table.table.table-striped#student_table= render :partial => 'student', :collection => @session.afterschool_class.students
 
-%br
-%div= button_to "Delete Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}
+.row
+  .span5.roster
+    %h3 Student Roster
+    %table.table.table-striped#student_table= render :partial => 'student', :collection => @session.afterschool_class.students
 
+    %br
+    %div= button_to "Delete Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}
+
+  .span5.student-assignments

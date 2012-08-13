@@ -12,7 +12,7 @@
   </a>
   <ul class='dropdown-menu'>
     <li>
-      <%= link_to "On time", attendance_path(student.find_session_attendance(session.id), attendance: {status: status}), method: :put, remote: :true %>
+      <%= link_to "On time", attendance_path(student.find_session_attendance(session.id), attendance: {status: status}), method: :put, remote: true %>
     </li>
     <li>
       <%= link_to "Absent", attendance_path(student.find_session_attendance(session.id)), method: :delete %>

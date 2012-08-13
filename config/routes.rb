@@ -1,14 +1,17 @@
 Timestamp::Application.routes.draw do
+  root to: 'afterschool_classes#index'
 
   resources :attendances, except: [:new, :edit, :index, :show]
 
+  resources :students, only: [:show, :update]
+  resources :student_assignments, only: :update
   resources :assignments
 
   resources :afterschool_classes do
     resources :sessions
   end
 
-  root to: 'afterschool_classes#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

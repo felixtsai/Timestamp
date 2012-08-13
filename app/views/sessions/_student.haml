@@ -6,3 +6,6 @@
         = link_to "Sign in", attendances_path(attendance: {session_id: @session.id, student_id: student.id}), method: :post, remote: :true, student_id: student.id
       - else
         = render partial: 'sign_in', locals: {student: student, session: @session}
+  %td
+    %span.label
+      = link_to "Show Assignments", student_path(student), method: :get, :remote => true
