@@ -1,6 +1,8 @@
 Timestamp::Application.routes.draw do
   root to: 'afterschool_classes#index'
 
+  devise_for :admins
+
   resources :attendances, except: [:new, :edit, :index, :show]
 
   resources :students, only: [:show, :update]
