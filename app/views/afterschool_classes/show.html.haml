@@ -1,1 +1,23 @@
-%h1= heading(@afterschool_class)
+%h2= heading(@afterschool_class)
+
+%table.table.table-striped#show_class_table
+  %thead
+    %tr
+      %th
+        Students
+      %th
+        %span.label.label-info
+          %i.icon-edit
+          =link_to "edit class", edit_afterschool_class_path(@afterschool_class)
+  -@afterschool_class.students.each do |student|
+    %tr
+      %td=student.first_name + " " + student.last_name
+      %td
+        =form_for student do |f|
+          =f.collection_select(:afterschool_class_id, AfterschoolClass.find(:all), :id, :teacher_name,  :selected => nil, :include_blank => 'Switch class')
+          = f.submit "Save", :class => "btn-mini"
+      %td
+        %span.label.label-important
+          %i.icon-trash
+          = link_to "delete", student_path(student), method: :delete
+

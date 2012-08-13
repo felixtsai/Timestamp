@@ -17,6 +17,10 @@ class AfterschoolClass < ActiveRecord::Base
       errors.add(:base, "Teachers cannot be empty")
     end
   end
+
+  def teacher_name
+    self.grade_level.year + " - " + self.teachers.first.salutation + " " + self.teachers.first.last_name
+  end
 end
 
 

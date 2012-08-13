@@ -40,3 +40,19 @@ body {
 .roster {
   margin-right: 10px;
 }
+
+#student_table td {
+  vertical-align:middle;
+}
+
+#show_class_table {
+  width: 600px;
+}
+
+#show_class_table td {
+  vertical-align:middle;
+}
+
+#show_class_table form {
+  height: 15px;
+}

@@ -1,0 +1,25 @@
+%h1 Edit Class
+%div
+  = form_for @afterschool_class, :html => {:multipart => true } do |f|
+    - if @afterschool_class.errors.any?
+      #error_explanation
+        .alert.alert-error
+          ="The form contains #{ pluralize(@afterschool_class.errors.count, "error") }"
+        %ul
+          -@afterschool_class.errors.full_messages.each do |msg|
+            %li= msg
+    .row
+      .span6
+        =render :partial => "teacher_form", :locals => { :f => f }
+        = f.submit "Save", :class => "btn btn-large btn-success"
+
+      .span4
+        .add-student-form
+          = file_field "file", :post
+          %br
+          = link_to '#' do
+            %i.icon-plus-sign
+            %span
+              Add Student
+        =render :partial => "student_form", :locals => { :f => f }
+

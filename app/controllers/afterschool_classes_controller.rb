@@ -25,6 +25,16 @@ class AfterschoolClassesController < ApplicationController
     @afterschool_class = AfterschoolClass.find(params[:id])
   end
 
+  def edit
+    @afterschool_class = AfterschoolClass.find(params[:id])
+  end
+
+  def update
+    @afterschool_class = AfterschoolClass.find(params[:id])
+    @afterschool_class.update_attributes(params[:afterschool_class])
+    redirect_to afterschool_class_path(@afterschool_class)
+  end
+
   def students_from_csv
     unparsed_file = File.open(params[:file][:post].tempfile.to_path.to_s).read
     parsed_csv = CSV.parse(unparsed_file)

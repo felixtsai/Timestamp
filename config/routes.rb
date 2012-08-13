@@ -9,6 +9,8 @@ Timestamp::Application.routes.draw do
   resources :student_assignments, only: :update
   resources :assignments
 
+  resources :students, only: [:destroy, :edit, :update]
+
   resources :afterschool_classes do
     resources :sessions
   end
