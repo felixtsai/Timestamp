@@ -1,5 +1,7 @@
 Timestamp::Application.routes.draw do
 
+  devise_for :admins
+
   resources :attendances, except: [:new, :edit, :index, :show]
 
   resources :assignments

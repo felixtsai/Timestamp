@@ -12,8 +12,24 @@
       <div class="container">
           <%= link_to "TimeStampz", root_path, class: 'brand' %>
         <ul class="nav">
+
           <li><%= link_to "Create Assignments", new_assignment_path %></li>
           <li><%= link_to "Create Class", new_afterschool_class_path %></li>
+        </ul>
+
+        <ul class="nav pull-right">
+          <li class="dropdown">
+            <a href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown">
+                  Account
+                  <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to("Signin", new_admin_session_path) if current_admin == nil %></li>
+              <li><%= link_to( "Signout", destroy_admin_session_path, :method => :delete) if current_admin != nil %></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -29,3 +45,4 @@
 
 </body>
 </html>
+

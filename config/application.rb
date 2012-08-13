@@ -63,5 +63,7 @@ module Timestamp
       g.test_framework    :rspec, fixture: true
       g.fixture_replacement :fabrication
     end
+
+    config.assets.initialize_on_precompile = false
   end
 end
