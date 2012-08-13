@@ -5,3 +5,6 @@
       = render partial: 'absent', locals: {student:student, session: @session}
     - else
       = render partial: 'sign_in', locals: {student: student, session: @session}
+  %td
+    %span.label
+      = link_to "Show Assignments", student_path(student), method: :get, :remote => true
