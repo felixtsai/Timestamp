@@ -12,6 +12,10 @@ class Student < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :afterschool_class
   accepts_nested_attributes_for :student_assignments
 
+  def outstanding_assignments
+    student_assignments.select { |s_a| s_a.due_date >= Date.today }
+  end
+
   def find_session_attendance(session_id)
     self.attendances.find_by_session_id(session_id)
   end

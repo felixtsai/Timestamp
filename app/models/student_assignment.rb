@@ -2,4 +2,5 @@
   attr_accessible :assignment_id, :completion_time, :student_id
   belongs_to :student
   belongs_to :assignment
+  delegate :due_date, :to => :assignment
 end
