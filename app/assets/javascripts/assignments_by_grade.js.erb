@@ -7,7 +7,7 @@ $(document).ready(function() {
     };
 
     $.ajax({
-       url: 'http://localhost:3000/assignments/grade/'+value,
+       url: 'http://'+document.location.host+'/assignments/grade/'+value,
        success: function(assignments) { list_assignments(assignments) },
        error: function() { console.log('error') }
      });
