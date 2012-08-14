@@ -1,7 +1,7 @@
 %tr
   %td=assignment.description
   %td=assignment.grade_level.year
-  %td=percent_complete(assignment)
+  %td="#{assignment.completion_percent}%"
   %td
     %span.label.label-info
       %i.icon-edit
