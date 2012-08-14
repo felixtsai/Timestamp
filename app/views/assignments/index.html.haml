@@ -7,5 +7,15 @@
       %th Assignment
       %th Grade
       %th % Complete
-  = render :partial => 'assignment', :collection => @assignments
+    %tr
+      %th{:colspan => 5} 6th Grade
+  = render :partial => 'assignment', :collection => @assignments.select {|a| a.grade_level.year == "6th Grade"}
+  %thead
+    %tr
+      %th{:colspan => 5} 7th Grade
+  = render :partial => 'assignment', :collection => @assignments.select {|a| a.grade_level.year == "7th Grade"}
+  %thead
+    %tr
+      %th{:colspan => 5} 8th Grade
+  = render :partial => 'assignment', :collection => @assignments.select {|a| a.grade_level.year == "8th Grade"}
 

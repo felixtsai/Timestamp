@@ -40,4 +40,11 @@ class Assignment < ActiveRecord::Base
       assignment.save
     end
   end
+
+  def completion_percent
+    completed = student_assignments.completed.count * 1.0
+    total = student_assignments.count* 1.0
+    total != 0 ? completed/total * 100.0 : 0.0
+  end
+
 end
