@@ -1,0 +1,14 @@
+%h1 Edit assignment
+
+= form_for @assignment do |f|
+  = collection_select(:assignment, :grade_level_id, GradeLevel.find(:all), :id, :year, :prompt => "Select grade level")
+  = collection_select(:assignment, :subject_id, Subject.find(:all), :id, :name, :prompt => "Select subject")
+  %br
+  %br
+  = f.label "Description"
+  = f.text_field :description
+  = f.label "Due Date"
+  = f.text_field :due_date, :id => "assignment_due_date_0"
+  %br
+  %br
+  = f.submit "Save Assignment", :class => "btn btn-large btn-success"

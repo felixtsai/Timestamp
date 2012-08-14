@@ -36,4 +36,6 @@ class Assignment < ActiveRecord::Base
       assignment.save
     end
   end
+
+
 end

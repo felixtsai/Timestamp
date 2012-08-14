@@ -32,7 +32,14 @@ class AfterschoolClassesController < ApplicationController
   def update
     @afterschool_class = AfterschoolClass.find(params[:id])
     @afterschool_class.update_attributes(params[:afterschool_class])
+    students_from_csv if params[:file]
     redirect_to afterschool_class_path(@afterschool_class)
+  end
+
+  def destroy
+    AfterschoolClass.find(params[:id]).destroy
+    flash[:success] = "Class has been deleted"
+    redirect_to afterschool_classes_path
   end
 
   def students_from_csv

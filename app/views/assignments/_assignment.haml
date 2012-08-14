@@ -1,0 +1,14 @@
+%tr
+  %td=assignment.description
+  %td=assignment.grade_level.year
+  %td=percent_complete(assignment)
+  %td
+    %span.label.label-info
+      %i.icon-edit
+      =link_to "edit", edit_assignment_path(assignment)
+  %td
+    %span.label.label-important
+      %i.icon-trash
+      =link_to "delete", assignment_path(assignment), method: :delete
+
+

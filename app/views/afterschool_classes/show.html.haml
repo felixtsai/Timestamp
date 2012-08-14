@@ -9,6 +9,10 @@
         %span.label.label-info
           %i.icon-edit
           =link_to "edit class", edit_afterschool_class_path(@afterschool_class)
+        &nbsp;
+        %span.label.label-important
+          %i.icon-trash
+          =link_to "delete class", afterschool_class_path(@afterschool_class), method: :delete
   -@afterschool_class.students.each do |student|
     %tr
       %td=student.first_name + " " + student.last_name

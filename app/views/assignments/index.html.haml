@@ -1,0 +1,11 @@
+%h1 Assignments List
+%ul.nav.nav-list
+  %li.divider
+%table.table.table-striped#assignment_table
+  %thead
+    %tr
+      %th Assignment
+      %th Grade
+      %th % Complete
+  = render :partial => 'assignment', :collection => @assignments
+

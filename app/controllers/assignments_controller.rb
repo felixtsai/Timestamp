@@ -1,6 +1,11 @@
 require 'date'
 
 class AssignmentsController < ApplicationController
+
+  def index
+    @assignments = Assignment.all
+  end
+
   def new
     @assignment = Assignment.new
   end
@@ -19,5 +24,22 @@ class AssignmentsController < ApplicationController
       flash[:success] = "Assignments added"
       redirect_to afterschool_classes_path
     end
+  end
+
+  def edit
+    @assignment = Assignment.find(params[:id])
+  end
+
+  def update
+    @assignment = Assignment.find(params[:id])
+    @assignment.update_attributes(params[:assignment])
+    flash[:success] = "Assignment Updated"
+    redirect_to assignments_path
+  end
+
+  def destroy
+    @assignment = Assignment.find(params[:id]).destroy
+    flash[:success] = "Assignment Deleted"
+    redirect_to :back
   end
 end
