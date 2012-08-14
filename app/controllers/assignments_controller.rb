@@ -3,7 +3,20 @@ require 'date'
 class AssignmentsController < ApplicationController
 
   def index
-    @assignments = Assignment.all
+    if params[:grade_level_id]
+      @assignments = Assignment.by_current.by_grade(params[:grade_level_id])
+    else
+      @assignments = Assignment.all
+    end
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render :partial => 'index'
+        end
+      end
+      # format.json { render :partial => 'index', :format => :json }
+      # format.json { @assignments }
+    end
   end
 
   def new

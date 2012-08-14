@@ -12,6 +12,10 @@ class Assignment < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :due_date
 
+  scope :by_current, where('due_date >= ?', Date.today)
+  scope :by_grade, lambda { |grade_level_id| where('grade_level_id = ?', grade_level_id) }
+
+
   def assign_student_assignments
     grade_level.students.each do |student|
       StudentAssignment.create(:student_id => student.id, :assignment_id => self.id)
@@ -36,6 +40,4 @@ class Assignment < ActiveRecord::Base
       assignment.save
     end
   end
-
-
 end

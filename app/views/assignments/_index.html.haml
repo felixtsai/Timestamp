@@ -1,0 +1,23 @@
+%h3
+  - if @assignments.empty?
+    = "No Current Assignments"
+  -else
+    =@assignments.first.grade_level.year
+%table.table.table-striped
+  %tr
+    %th
+      Subject
+    %th
+      Due Date
+    %th
+      Description
+  -@assignments.each do |assignment|
+    %tr
+      %td
+        =assignment.subject.name
+      %td
+        =assignment.due_date
+      %td
+        =assignment.description
+
+

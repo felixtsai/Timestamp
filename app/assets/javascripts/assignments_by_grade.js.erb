@@ -1,0 +1,15 @@
+$(document).ready(function() {
+  $('#assignment_grade_level_id').change(function() {
+    var value = $('#assignment_grade_level_id option:selected').val();
+
+    var list_assignments = function(assignments) {
+      $('.grade-assignments').html(assignments)
+    };
+
+    $.ajax({
+       url: 'http://localhost:3000/assignments/grade/'+value,
+       success: function(assignments) { list_assignments(assignments) },
+       error: function() { console.log('error') }
+     });
+  });
+});

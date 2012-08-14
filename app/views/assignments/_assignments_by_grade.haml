@@ -1,0 +1,8 @@
+%h3
+  - selected_assignments = show_by_grade_level(@assignments, selected_grade_id)
+  = selected_assignments.first.grade_level
+%ul
+  - selected_assignments.each do |assignment|
+  %li= assignment.description
+
+

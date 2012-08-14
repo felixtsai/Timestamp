@@ -15,6 +15,8 @@ Timestamp::Application.routes.draw do
     resources :sessions
   end
 
+  match "/assignments/grade/:grade_level_id" => 'assignments#index'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
