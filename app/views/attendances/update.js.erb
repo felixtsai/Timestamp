@@ -1,1 +1,1 @@
-$("[student_id=<%=j @student.id.to_s %>]").replaceWith("<%=j render :partial => 'sessions/sign_in', :locals => {:session => @session, :student => @student} %>");
+$(".btn-group[student_id=<%=j @student.id.to_s %>]").replaceWith("<%=j render :partial => 'sessions/sign_in', :locals => {:session => @session, :student => @student} %>");
