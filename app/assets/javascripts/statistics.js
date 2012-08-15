@@ -1,3 +1,3 @@
-$(#'whatever').click(function() {
+$('#whatever').click(function() {
   overall_attendance_percent
 })

@@ -18,7 +18,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :deveopment, :test do
+group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'jazz_hands'
