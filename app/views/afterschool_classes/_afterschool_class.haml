@@ -7,7 +7,7 @@
         =link_to "Enter class" , afterschool_class_session_path(afterschool_class.id, afterschool_class.sessions.find_by_date(Time.now.to_date))
       %td
         %span.label.label-inverse
-          =link_to "Current Status" , afterschool_class_session_path(afterschool_class.id, :id => afterschool_class.sessions.last.id), remote: true
+          =link_to "Current Status" , afterschool_class_session_path(afterschool_class.id, :id => afterschool_class.sessions.find_by_date(Time.now.to_date)), remote: true
     -else
       %span.label.label-success
         =link_to "Start class" , afterschool_class_sessions_path(afterschool_class.id) ,  method: :post

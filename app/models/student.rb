@@ -13,11 +13,12 @@ class Student < ActiveRecord::Base
   accepts_nested_attributes_for :student_assignments
 
   def completed_assignments
-    self.student_assignments.select { |s_a| s_a.completion_time }
+    self.student_assignments.select { |s_a| s_a.completion_time && s_a.due_date >= Date.today }
+    #all completed assignments
   end
 
   def completed_assignments_count
-    self.completed_assignments.length
+    completed_assignments.length
   end
 
   def total_outstanding_assignments
@@ -25,11 +26,16 @@ class Student < ActiveRecord::Base
   end
 
   def total_outstanding_assignments_count
-    self.student_assignments.select { |s_a| s_a.due_date >= Date.today }.length
+    total_outstanding_assignments.length
+    # self.student_assignments.select { |s_a| s_a.due_date >= Date.today }.length
   end
 
   def assignment_completion_percentage
-    (self.completed_assignments_count/self.total_outstanding_assignments.length.to_f).round(2)*100
+    if total_outstanding_assignments_count == 0
+      return "--"
+    else
+      (completed_assignments_count/total_outstanding_assignments.length.to_f).round(2)*100
+    end
   end
 
   def find_session_attendance(session_id)

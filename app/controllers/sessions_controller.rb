@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
 
   def show
     @session = Session.find(params[:id])
+    @afterschool_class = @session.afterschool_class
+    @teacher = @afterschool_class.teachers.first
 
     respond_to do |format|
       format.html
