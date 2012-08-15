@@ -3,9 +3,9 @@ class Student < ActiveRecord::Base
 
   has_one :grade_level, :through => :afterschool_class
   belongs_to :afterschool_class, :inverse_of => :students
-  has_many :student_assignments, :order => "created_at"
+  has_many :student_assignments, :order => "created_at", :dependent => :destroy
   has_many :assignments, through: :student_assignments
-  has_many :attendances
+  has_many :attendances, :dependent => :destroy
   has_many :sessions, through: :attendances
 
 
