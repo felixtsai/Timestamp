@@ -32,7 +32,3 @@ group :development, :test do
   gem 'launchy'
   gem 'simplecov', :require => false
 end
-
-group :production do
-  gem 'therubyracer-heroku'
-end
