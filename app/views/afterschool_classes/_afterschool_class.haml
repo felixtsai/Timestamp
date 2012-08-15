@@ -2,12 +2,15 @@
   %td
     =link_to afterschool_class.teachers.first.salutation + " " + afterschool_class.teachers.first.last_name.capitalize + "  - " + afterschool_class.grade_level.year, afterschool_class_path(afterschool_class)
   %td
-    -if afterschool_class.sessions.all.select {|session| session.date == Time.now.to_date}.empty?
-      %span.label.label-success
-        =link_to "Start class" , afterschool_class_sessions_path(afterschool_class.id) ,  method: :post
-    -else
+    -if afterschool_class.sessions.last && afterschool_class.current_session?
       %span.label.label-info
         =link_to "Enter class" , afterschool_class_session_path(afterschool_class.id, afterschool_class.sessions.find_by_date(Time.now.to_date))
-  %td
-    %span.label.label-inverse
-      =link_to "Daily Report" , afterschool_class_path(afterschool_class.id)
+      %td
+        %span.label.label-inverse
+          =link_to "Current Status" , afterschool_class_session_path(afterschool_class.id, :id => afterschool_class.sessions.last.id), remote: true
+    -else
+      %span.label.label-success
+        =link_to "Start class" , afterschool_class_sessions_path(afterschool_class.id) ,  method: :post
+        %td
+          %span.label
+            ="Not In Session"

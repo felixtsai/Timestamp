@@ -4,7 +4,7 @@ class AfterschoolClass < ActiveRecord::Base
   has_many :students, :inverse_of => :afterschool_class
   has_many :teachers, :inverse_of => :afterschool_class
   belongs_to :grade_level
-  has_many :sessions
+  has_many :sessions, :dependent => :destroy
 
   validates_presence_of :grade_level, :teachers
   validate :teacher_existence
@@ -23,6 +23,11 @@ class AfterschoolClass < ActiveRecord::Base
   def teacher_name
     self.grade_level.year + " - " + self.teachers.first.salutation + " " + self.teachers.first.last_name
   end
+
+  def current_session?
+    sessions.last.date == Time.now.to_date
+  end
+
 end
 
 

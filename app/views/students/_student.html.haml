@@ -7,7 +7,7 @@
       %th Status
       %th Subject
       %th Description
-      - student.outstanding_assignments.each do |s_a|
+      - student.total_outstanding_assignments.each do |s_a|
         %tr
           %td
             -if s_a.completion_time

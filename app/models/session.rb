@@ -1,7 +1,7 @@
 class Session < ActiveRecord::Base
   attr_accessible :afterschool_class_id, :date, :start_time
   belongs_to :afterschool_class
-  has_many :attendances
+  has_many :attendances, :dependent => :destroy
   has_many :students, through: :attendances
   has_many :assignments, :through => :afterschool_class
 
@@ -28,7 +28,7 @@ class Session < ActiveRecord::Base
     total_assignments != 0 ? completed_assignments.to_f / total_assignments.to_f : "No Assignments"
     # total_done_assignments = 0
     # students.each do |student|
-    #   total_done_assignments += (student.student_assignments.count - student.outstanding_assignments_count)
+    #   total_done_assignments += (student.student_assignments.count - student.total_outstanding_assignments_count)
     # end
     # "#{(total_done_assignments.to_f)/(afterschool_class.grade_level.assignments.count * students.count)*100.00}%"
   end

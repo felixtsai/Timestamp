@@ -1,0 +1,26 @@
+%h3 Student Stats
+%table.table.table-striped
+  %tr
+    %th Student
+    %th Attend.
+    %th HW
+  - @session.students.each do |student|
+    %tr
+      %td
+        = full_name(student)
+      %td
+        - current_status = student.attendances.select {|attendance| attendance.session_id == @session.id }[0].status
+        -case current_status
+          -when "Late"
+            %span.badge.badge-warning
+          -when "On time"
+            %span.badge.badge-success
+          -when nil
+            %span.badge.badge-important
+      %td
+        = student.assignment_completion_percentage.to_s + "%"
+
+
+
+
+

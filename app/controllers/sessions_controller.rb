@@ -6,6 +6,11 @@ class SessionsController < ApplicationController
 
   def show
     @session = Session.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
