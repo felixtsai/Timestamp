@@ -9,6 +9,8 @@ class AfterschoolClass < ActiveRecord::Base
   validates_presence_of :grade_level, :teachers
   validate :teacher_existence
 
+  has_many :assignments, :through => :grade_level
+
   accepts_nested_attributes_for :teachers
   accepts_nested_attributes_for :students, :reject_if => proc { |student| student['first_name'].blank? }
 

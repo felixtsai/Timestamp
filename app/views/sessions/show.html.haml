@@ -9,8 +9,40 @@
   .span5.roster
     %h3 Student Roster
     %table.table.table-striped#student_table= render :partial => 'student', :collection => @session.afterschool_class.students
-
+  .span5.student-assignments
+.row
+  .span5.session_stats
+    .example-number
+      =@session.overall_attendance_percent
+      Attendance
+    %h1
+      Absent :
+      =@session.absent_count
+    %h1
+      On Time :
+      =@session.on_time_count
+    %h1
+      Late :
+      =@session.late_count
+    %h1
+      Overall Homework :
+      =@session.overall_assignment_completion_percentage
+    %h1
+      Math :
+      =@session.math_assignment_completion_percentage
+    %h1
+      ELA :
+      =@session.ela_assignment_completion_percentage
+    %h1
+      Social Studies :
+      =@session.social_studies_assignment_completion_percentage
+    %h1
+      Science :
+      =@session.science_assignment_completion_percentage
+    %h1
+      Extra Credit :
+      =@session.extra_credit_assignment_completion_percentage
     %br
     %div= button_to "Delete Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}
 
-  .span5.student-assignments
+

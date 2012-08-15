@@ -60,3 +60,34 @@ body {
 #assignment_table {
   width: 600px;
 }
+
+.example-number {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 50px 0 200px;
+  text-align: center;
+  font: 40px/40px Arial, sans-serif;
+  color: white;
+  background: #C91F2C;
+}
+
+.example-number::before {
+content: "";
+position: absolute;
+bottom: -140px;
+right: 0;
+border-width: 0 0 140px 140px;
+border-style: solid;
+border-color: transparent #C91F2C;
+}
+
+.example-number::after {
+content: "";
+position: absolute;
+bottom: -140px;
+right: 85px;
+border-width: 0 0 140px 55px;
+border-style: solid;
+border-color: transparent white;
+}
