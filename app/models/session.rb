@@ -23,11 +23,14 @@ class Session < ActiveRecord::Base
   end
 
   def overall_assignment_completion_percentage
-    total_done_assignments = 0
-    students.each do |student|
-      total_done_assignments += (student.student_assignments.count - student.outstanding_assignments_count)
-    end
-    "#{(total_done_assignments.to_f)/(afterschool_class.grade_level.assignments.count * students.count)*100.00}%"
+    total_assignments = assignments.for_students.count
+    completed_assignments = assignments.for_students.completed.count
+    total_assignments != 0 ? completed_assignments.to_f / total_assignments.to_f : "No Assignments"
+    # total_done_assignments = 0
+    # students.each do |student|
+    #   total_done_assignments += (student.student_assignments.count - student.outstanding_assignments_count)
+    # end
+    # "#{(total_done_assignments.to_f)/(afterschool_class.grade_level.assignments.count * students.count)*100.00}%"
   end
 
   def math_assignment_completion_percentage
