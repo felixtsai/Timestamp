@@ -1,0 +1,40 @@
+.span1.session_stats
+  .well
+    .stat=@grade_level.overall_assignment_completion_percentage
+    Overall
+.span1.session_stats
+  .well
+    .stat=@grade_level.math_assignment_completion_percentage
+    Math
+.span1.session_stats
+  .well
+    .stat=@grade_level.ela_assignment_completion_percentage
+    ELA
+.span1.session_stats
+  .well
+    .stat=@grade_level.social_studies_assignment_completion_percentage
+    S.S.
+.span1.session_stats
+  .well
+    .stat=@grade_level.science_assignment_completion_percentage
+    Science
+.span1.session_stats
+  .well
+    .stat=@grade_level.extra_credit_assignment_completion_percentage
+    Extra Credit
+.span1.session_stats
+  .well
+    .stat=@grade_level.overall_attendance_percent
+    Attendance
+.span1.session_stats
+  %span.badge.badge-success
+    On Time :
+    =@grade_level.on_time_count
+  %br
+  %span.badge.badge-warning
+    Late :
+    =@grade_level.late_count
+  %br
+  %span.badge.badge-important
+    Absent :
+    =@grade_level.absent_count

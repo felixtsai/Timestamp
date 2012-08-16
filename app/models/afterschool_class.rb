@@ -12,7 +12,7 @@ class AfterschoolClass < ActiveRecord::Base
   has_many :assignments, :through => :grade_level
 
   accepts_nested_attributes_for :teachers
-  accepts_nested_attributes_for :students, :reject_if => proc { |student| student['first_name'].blank? }
+  accepts_nested_attributes_for :students, :reject_if => proc { |student| student['first_name'].blank? && student['last_name'].blank? }
 
   def teacher_existence
     if teachers.empty?

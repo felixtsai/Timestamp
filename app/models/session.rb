@@ -6,8 +6,8 @@ class Session < ActiveRecord::Base
   has_many :assignments, :through => :afterschool_class
   has_many :roster_students, through: :afterschool_class, source: :students
   has_many :student_assignments, through: :roster_students
-  has_many :student_assignments, :through => :assignments
   has_one :teacher, :through => :afterschool_class
+
 
   def session_student_count
     students.count

@@ -30,7 +30,7 @@ class Student < ActiveRecord::Base
   def total_outstanding_assignments_count
     total_outstanding_assignments.length
   end
-  
+
   def remaining_outstanding_assignments_count
     total_outstanding_assignments_count - completed_assignments_count
   end

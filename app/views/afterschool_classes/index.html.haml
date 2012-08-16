@@ -1,6 +1,18 @@
 %h1 Afterschool Class List
 %ul.nav.nav-list
   %li.divider
+
+.row
+  .span1#grade-links
+    - @grade_levels.each do |grade|
+      %span.label
+        = link_to grade.year, grade_level_path(grade), method: :get, :remote => true
+      %br
+  #grade-stats
+
+%ul.nav.nav-list
+  %li.divider
+
 .row
   .span5
     %h3 Teacher

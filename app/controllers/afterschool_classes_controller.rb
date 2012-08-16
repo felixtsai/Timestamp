@@ -2,6 +2,7 @@ class AfterschoolClassesController < ApplicationController
   def index
     @afterschool_classes = AfterschoolClass.find(:all)
     @session = Session.new
+    @grade_levels = GradeLevel.all
   end
 
   def new

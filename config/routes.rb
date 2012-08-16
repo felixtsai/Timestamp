@@ -10,6 +10,7 @@ Timestamp::Application.routes.draw do
   resources :assignments
 
   resources :students, only: [:destroy, :edit, :update]
+  resources :grade_levels, only: :show
 
   resources :afterschool_classes do
     resources :sessions

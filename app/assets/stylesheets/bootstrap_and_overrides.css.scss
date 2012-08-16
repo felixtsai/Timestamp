@@ -37,10 +37,6 @@ body {
   width: 400px;
 }
 
-.roster {
-  margin-right: 10px;
-}
-
 #student_table td {
   vertical-align:middle;
 }
@@ -62,7 +58,7 @@ body {
 }
 
 .well {
-  background-color: #CAC4C4;
+  background-color: lightgrey;
   width: 65px;
   height: 45px;
   color: white;
@@ -77,8 +73,8 @@ body {
   font-size: 20px;
   padding-top: 5px;
   padding-bottom: 2px;
-  padding-top: 15px;
-  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 2px;
 }
 
 th.grade{

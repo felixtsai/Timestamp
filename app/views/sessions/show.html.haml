@@ -4,6 +4,7 @@
 
 %ul.nav.nav-list
   %li.divider
+
 .row
   .span1.offset1.session_stats
     .well
@@ -34,15 +35,18 @@
       .stat=@session.overall_attendance_percent
       Attendance
   .span1.session_stats
-    %span.badge.badge-important
-      Absent :
-      =@session.absent_count
     %span.badge.badge-success
       On Time :
       =@session.on_time_count
+    %br
     %span.badge.badge-warning
       Late :
       =@session.late_count
+    %br
+    %span.badge.badge-important
+      Absent :
+      =@session.absent_count
+
 %ul.nav.nav-list
   %li.divider
 .row
@@ -50,7 +54,6 @@
     %h3 Student Roster
     %table.table.table-striped#student_table= render :partial => 'student', :collection => @session.afterschool_class.students
   .span5.student-assignments
-
 
     %br
 .row

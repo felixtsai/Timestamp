@@ -1,23 +1,23 @@
 %div
   %h3
     = full_name(student)
-  %table{ :cellpadding => "3", :cellspacing => "2" }
+  %table.table.table-striped{ :cellpadding => "3", :cellspacing => "2" }
 
     %tr
       %th Status
       %th Subject
       %th Description
-      - student.total_outstanding_assignments.each do |s_a|
-        %tr
-          %td
-            -if s_a.completion_time
-              %span.label.label-success
-                = link_to "Complete", student_assignment_path(s_a, :completion_time => "NULL"), method: :put, :remote => true
-            -else
-              %span.label.label-important
-                = link_to "Incomplete", student_assignment_path(s_a, :completion_time => Time.now), method: :put, :remote => true
-          %td
-            = s_a.assignment.subject.name
-          %td
-            = s_a.assignment.description
+    - student.total_outstanding_assignments.each do |s_a|
+      %tr
+        %td
+          -if s_a.completion_time
+            %span.label.label-success
+              = link_to "Complete", student_assignment_path(s_a, :completion_time => "NULL"), method: :put, :remote => true
+          -else
+            %span.label.label-important
+              = link_to "Incomplete", student_assignment_path(s_a, :completion_time => Time.now), method: :put, :remote => true
+        %td
+          = s_a.assignment.subject.name
+        %td
+          = s_a.assignment.description
 
