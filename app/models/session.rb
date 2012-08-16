@@ -32,4 +32,5 @@ class Session < ActiveRecord::Base
     completed = student_assignments.select{|sa| sa.subject_name == subject && sa.completion_time != nil}.count.to_f
     total != 0 ? "#{(completed/total * 100).to_i}%" : "N/A"
   end
+
 end
