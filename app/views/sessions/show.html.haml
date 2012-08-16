@@ -5,9 +5,7 @@
 %ul.nav.nav-list
   %li.divider
 .row
-  .span1.session_stats
-    a
-  .span1.session_stats
+  .span1.offset1.session_stats
     .well
       .stat=@session.overall_assignment_completion_percentage
       Overall
@@ -45,6 +43,8 @@
     %span.badge.badge-warning
       Late :
       =@session.late_count
+%ul.nav.nav-list
+  %li.divider
 .row
   .span5.roster
     %h3 Student Roster
