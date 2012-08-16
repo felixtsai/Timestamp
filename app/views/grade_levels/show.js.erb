@@ -1,1 +1,5 @@
 $('#grade-stats').html("<%=j render(:partial => 'grade_stats') %>");
+
+$('#grade-links .label').css('background-color', 'grey');
+
+$("a[grade_level_id='<%= @grade_level.id %>']").parent().css('background-color', 'black');

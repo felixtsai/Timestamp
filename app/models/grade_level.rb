@@ -62,39 +62,14 @@ class GradeLevel < ActiveRecord::Base
   end
 
   def overall_assignment_completion_percentage
-    total_assignments = assignments.by_current.for_students.count
+    total_assignments = assignments.by_current.for_students.count.to_f
     completed_assignments = assignments.by_current.for_students.completed.count
-    total_assignments != 0 ? "#{(completed_assignments.to_f / total_assignments.to_f*100).to_i}%" : "N/A"
+    total_assignments != 0 ? "#{(completed_assignments/ total_assignments*100).to_i}%" : "N/A"
   end
 
-  def math_assignment_completion_percentage
-    total_assignments = assignments.by_current.for_students.math.count
-    completed_assignments = assignments.by_current.for_students.math.completed.count
-    total_assignments != 0 ? "#{(completed_assignments.to_f / total_assignments.to_f*100).to_i}%" : "N/A"
+  def assignments_completion_percentage(subject)
+    total_assignments = assignments.by_current.by_subject(subject).for_students.count.to_f
+    completed_assignments = assignments.by_current.by_subject(subject).for_students.completed.count
+    total_assignments != 0 ? "#{(completed_assignments / total_assignments*100).to_i}%" : "N/A"
   end
-
-  def ela_assignment_completion_percentage
-    total_assignments = assignments.by_current.for_students.ela.count
-    completed_assignments = assignments.by_current.for_students.ela.completed.count
-     total_assignments != 0 ? "#{(completed_assignments.to_f / total_assignments.to_f*100).to_i}%" : "N/A"
-  end
-
-  def social_studies_assignment_completion_percentage
-    total_assignments = assignments.by_current.for_students.social_studies.count
-    completed_assignments = assignments.by_current.for_students.social_studies.completed.count
-    total_assignments != 0 ? "#{(completed_assignments.to_f / total_assignments.to_f*100).to_i}%" : "N/A"
-  end
-
-  def science_assignment_completion_percentage
-    total_assignments = assignments.by_current.for_students.science.count
-    completed_assignments = assignments.by_current.for_students.science.completed.count
-    total_assignments != 0 ? "#{(completed_assignments.to_f / total_assignments.to_f*100).to_i}%" : "N/A"
-  end
-
-  def extra_credit_assignment_completion_percentage
-    total_assignments = assignments.by_current.for_students.extra_credit.count
-    completed_assignments = assignments.by_current.for_students.extra_credit.completed.count
-    total_assignments != 0 ? "#{(completed_assignments.to_f / total_assignments.to_f*100).to_i}%" : "N/A"
-  end
-
 end

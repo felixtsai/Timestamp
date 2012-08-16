@@ -6,7 +6,7 @@
   .span1#grade-links
     - @grade_levels.each do |grade|
       %span.label
-        = link_to grade.year, grade_level_path(grade), method: :get, :remote => true
+        = link_to grade.year, grade_level_path(grade), method: :get, :remote => true, :grade_level_id => grade.id
       %br
   #grade-stats
 

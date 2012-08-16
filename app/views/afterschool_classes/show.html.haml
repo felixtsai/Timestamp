@@ -12,7 +12,7 @@
         &nbsp;
         %span.label.label-important
           %i.icon-trash
-          =link_to "delete class", afterschool_class_path(@afterschool_class), method: :delete
+          =link_to "delete class", afterschool_class_path(@afterschool_class), method: :delete, data: {confirm: "Are you sure?"}
   -@afterschool_class.students.each do |student|
     %tr
       %td=student.first_name + " " + student.last_name
@@ -23,5 +23,5 @@
       %td
         %span.label.label-important
           %i.icon-trash
-          = link_to "delete", student_path(student), method: :delete
+          = link_to "delete", student_path(student), method: :delete, data: {confirm: "Are you sure?"}
 

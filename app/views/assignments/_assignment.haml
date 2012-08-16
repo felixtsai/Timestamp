@@ -10,6 +10,6 @@
   %td
     %span.label.label-important
       %i.icon-trash
-      =link_to "delete", assignment_path(assignment), method: :delete
+      =link_to "delete", assignment_path(assignment), method: :delete, data: {confirm: "Are you sure?"}
 
 

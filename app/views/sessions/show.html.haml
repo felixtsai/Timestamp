@@ -36,7 +36,7 @@
       Attendance
   .span1.session_stats
     %span.badge.badge-success
-      On Time :
+      On time :
       =@session.on_time_count
     %br
     %span.badge.badge-warning
@@ -57,6 +57,7 @@
 
     %br
 .row
-  %div= button_to "Delete Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}
+  .span1
+    %div= button_to "Reset Session", afterschool_class_session_path(@session), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-mini btn-danger"
 
 

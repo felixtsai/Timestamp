@@ -4,23 +4,23 @@
     Overall
 .span1.session_stats
   .well
-    .stat=@grade_level.math_assignment_completion_percentage
+    .stat=@grade_level.assignments_completion_percentage("Math")
     Math
 .span1.session_stats
   .well
-    .stat=@grade_level.ela_assignment_completion_percentage
+    .stat=@grade_level.assignments_completion_percentage("English Language Arts (ELA)")
     ELA
 .span1.session_stats
   .well
-    .stat=@grade_level.social_studies_assignment_completion_percentage
+    .stat=@grade_level.assignments_completion_percentage("Social Studies")
     S.S.
 .span1.session_stats
   .well
-    .stat=@grade_level.science_assignment_completion_percentage
+    .stat=@grade_level.assignments_completion_percentage("Science")
     Science
 .span1.session_stats
   .well
-    .stat=@grade_level.extra_credit_assignment_completion_percentage
+    .stat=@grade_level.assignments_completion_percentage("Extra Credit")
     Extra Credit
 .span1.session_stats
   .well
@@ -28,7 +28,7 @@
     Attendance
 .span1.session_stats
   %span.badge.badge-success
-    On Time :
+    On time :
     =@grade_level.on_time_count
   %br
   %span.badge.badge-warning

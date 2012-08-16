@@ -2,6 +2,52 @@
   = "#{@teacher.salutation} #{@teacher.first_name} #{@teacher.last_name}"
 %table.table.table-striped
   %tr
+    %th Subject
+    %th Completion %
+  %tr
+    %td Overall
+    %td
+      = @session.overall_assignment_completion_percentage
+  %tr
+    %td Math
+    %td
+      = @session.subject_completion_percentage("Math")
+  %tr
+    %td ELA
+    %td
+      = @session.subject_completion_percentage("English Language Arts (ELA)")
+  %tr
+    %td S.S.
+    %td
+      = @session.subject_completion_percentage("Social Studies")
+  %tr
+    %td Science
+    %td
+      = @session.subject_completion_percentage("Science")
+  %tr
+    %td Extra Credit
+    %td
+      = @session.subject_completion_percentage("Extra Credit")
+  %tr
+    %td Attendance
+    %td
+      = @session.overall_attendance_percent
+  %tr
+    %td{colspan: 2}
+      %span.badge.badge-success
+        = "On time: #{@session.on_time_count}"
+      %span
+        &nbsp;&nbsp;
+      %span.badge.badge-warning
+        = "Late: #{@session.late_count}"
+      %span
+        &nbsp;&nbsp;
+      %span.badge.badge-important
+        = "Absent: #{@session.absent_count}"
+
+
+%table.table.table-striped
+  %tr
     %th Student
     %th Attend.
     %th HW
