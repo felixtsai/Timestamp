@@ -1,3 +1,3 @@
 $(".span5.student-assignments").html("<%=j render(:partial => '/students/student', :locals => {:student => @student_assignment.student }) %>");
 
-$(".badge[student_id='<%= @student_assignment.student.id %>']").html("<%= @student_assignment.student.total_outstanding_assignments_count %>")
+$(".badge[student_id='<%= @student_assignment.student.id %>']").html("<%= @student_assignment.student.remaining_outstanding_assignments_count %>")

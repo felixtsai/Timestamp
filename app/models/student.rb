@@ -14,7 +14,7 @@ class Student < ActiveRecord::Base
 
   def completed_assignments
     self.student_assignments.select { |s_a| s_a.completion_time && s_a.due_date >= Date.today }
-    #all completed assignments
+    #day's completed assignments
   end
 
   def completed_assignments_count
@@ -27,7 +27,10 @@ class Student < ActiveRecord::Base
 
   def total_outstanding_assignments_count
     total_outstanding_assignments.length
-    # self.student_assignments.select { |s_a| s_a.due_date >= Date.today }.length
+  end
+  
+  def remaining_outstanding_assignments_count
+    total_outstanding_assignments_count - completed_assignments_count
   end
 
   def assignment_completion_percentage
