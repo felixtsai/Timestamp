@@ -1,2 +1,16 @@
 $(".span5.current-status").html("<%=j render(:partial => '/sessions/student_dashboard') %>");
 
+var session_id = "<%= @session.id %>";
+var afterschool_class_id = "<%= @session.afterschool_class.id %>";
+
+var student_dashboard = function(session) { $(".span5.current-status").html(session); }
+
+clearTimeout(refresh);
+
+var refresh = setInterval(function(){
+  $.ajax({
+     url: 'http://'+document.location.host+'/afterschool_classes/'+afterschool_class_id+'/sessions/'+session_id,
+     success: function(session) { student_dashboard(session); },
+     error: function() { console.log('error') }
+   });
+}, 2000);

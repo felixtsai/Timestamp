@@ -10,9 +10,12 @@ class SessionsController < ApplicationController
     @teacher = @afterschool_class.teachers.first
 
     respond_to do |format|
-      format.html
+      format.html do
+        if request.xhr?
+          render :partial => 'student_dashboard'
+        end
+      end
       format.js
-      # format.csv { render text: @session}
     end
   end
 
