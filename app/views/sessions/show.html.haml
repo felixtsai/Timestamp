@@ -4,13 +4,9 @@
 
 %ul.nav.nav-list
   %li.divider
-
 .row
-  .span5.roster
-    %h3 Student Roster
-    %table.table.table-striped#student_table= render :partial => 'student', :collection => @session.afterschool_class.students
-  .span5.student-assignments
-.row
+  .span1.session_stats
+    a
   .span1.session_stats
     .well
       .stat=@session.overall_assignment_completion_percentage
@@ -49,6 +45,12 @@
     %span.badge.badge-warning
       Late :
       =@session.late_count
+.row
+  .span5.roster
+    %h3 Student Roster
+    %table.table.table-striped#student_table= render :partial => 'student', :collection => @session.afterschool_class.students
+  .span5.student-assignments
+
 
     %br
 .row
