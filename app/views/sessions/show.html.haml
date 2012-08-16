@@ -17,23 +17,23 @@
       Overall
   .span1.session_stats
     .well
-      .stat=@session.math_assignment_completion_percentage
+      .stat=@session.subject_completion_percentage("Math")
       Math
   .span1.session_stats
     .well
-      .stat=@session.ela_assignment_completion_percentage
+      .stat=@session.subject_completion_percentage("ELA")
       ELA
   .span1.session_stats
     .well
-      .stat=@session.social_studies_assignment_completion_percentage
+      .stat=@session.subject_completion_percentage("Social Studies")
       S.S.
   .span1.session_stats
     .well
-      .stat=@session.science_assignment_completion_percentage
+      .stat=@session.subject_completion_percentage("Science")
       Science
   .span1.session_stats
     .well
-      .stat=@session.extra_credit_assignment_completion_percentage
+      .stat=@session.subject_completion_percentage("Extra Credit")
       Extra Credit
   .span1.session_stats
     .well
