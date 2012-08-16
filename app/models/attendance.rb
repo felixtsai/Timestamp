@@ -8,7 +8,7 @@ class Attendance < ActiveRecord::Base
   scope :late, where("status = ?", 'Late')
 
   def log_status
-    if (Time.now - self.session.start_time) > 1.minutes
+    if (Time.now - self.session.start_time) > 5.minutes
       self.status = "Late"
     else
       self.status = "On time"
