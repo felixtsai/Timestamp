@@ -4,7 +4,7 @@ class Session < ActiveRecord::Base
   has_many :attendances, :dependent => :destroy
   has_many :students, through: :attendances
   has_many :assignments, :through => :afterschool_class
-
+  has_many :student_assignments, :through => :students
 
   def absent_count
     afterschool_class.students.count - attendances.count
@@ -23,8 +23,8 @@ class Session < ActiveRecord::Base
   end
 
   def overall_assignment_completion_percentage
-    total_assignments = assignments.for_students.count
-    completed_assignments = assignments.for_students.completed.count
+    total_assignments = student_assignments.by_current.count
+    completed_assignments = student_assignments.by_current.completed.count
     total_assignments != 0 ? "#{(completed_assignments.to_f / total_assignments.to_f*100).to_i}%" : "N/A"
   end
 
