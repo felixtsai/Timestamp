@@ -13,6 +13,7 @@ class Assignment < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :due_date
 
+
   scope :by_current, where('due_date >= ?', Date.today)
   scope :by_grade, lambda { |grade_level_id| where('grade_level_id = ?', grade_level_id) }
   scope :math, joins(:subject).where("name = ?", 'Math')
@@ -22,6 +23,15 @@ class Assignment < ActiveRecord::Base
   scope :extra_credit, joins(:subject).where("name = ?", 'Extra Credit')
   scope :for_students, joins(:student_assignments)
   scope :completed, for_students.where("student_assignments.completion_time IS NOT NULL")
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |assignment|
+        csv << assignment.attributes.values_at(*column_names)
+      end
+    end
+  end
 
   def assign_student_assignments
     grade_level.students.each do |student|

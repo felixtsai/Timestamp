@@ -9,6 +9,8 @@ class AssignmentsController < ApplicationController
       @assignments = Assignment.all
     end
     respond_to do |format|
+      format.csv { send_data @assignments.to_csv}
+      format.xls # { send_data @assignments.to_csv(col_sep: "\t") }
       format.html do
         if request.xhr?
           render :partial => 'index'

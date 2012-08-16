@@ -28,6 +28,9 @@ class AfterschoolClass < ActiveRecord::Base
     sessions.last.date == Time.now.to_date
   end
 
+  def student_count
+    students.count
+  end
 end
 
 

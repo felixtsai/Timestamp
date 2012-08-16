@@ -11,7 +11,7 @@
     .row
       .span6
         =render :partial => "teacher_form", :locals => { :f => f }
-        = f.submit "Save", :class => "btn btn-large btn-success"
+
 
       .span4
         .add-student-form
@@ -23,3 +23,4 @@
               Add Student
         =render :partial => "student_form", :locals => { :f => f }
 
+        = f.submit "Save", :class => "btn btn-large btn-success"

@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      # format.csv { render text: @session}
     end
   end
 
