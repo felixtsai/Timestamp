@@ -1,3 +1,13 @@
 $(".span5.student-assignments").html("<%=j render(:partial => '/students/student', :locals => {:student => @student_assignment.student }) %>");
 
-$(".badge[student_id='<%= @student_assignment.student.id %>']").html("<%= @student_assignment.student.remaining_outstanding_assignments_count %>")
+$(".badge[student_id='<%= @student_assignment.student.id %>']").html("<%= @student_assignment.student.remaining_outstanding_assignments_count %>");
+
+$("#<%=j @student_assignment.subject_name %>").html("<%= @student_assignment.student.afterschool_class.sessions.last.subject_completion_percentage(@student_assignment.subject_name) %>");
+
+$("#EC").html("<%= @student_assignment.student.afterschool_class.sessions.last.subject_completion_percentage('Extra Credit') %>");
+
+$("#SS").html("<%= @student_assignment.student.afterschool_class.sessions.last.subject_completion_percentage('Social Studies') %>");
+
+$("#ELA").html("<%= @student_assignment.student.afterschool_class.sessions.last.subject_completion_percentage('English Language Arts (ELA)') %>");
+
+$("#overall-assignment").html("<%= @student_assignment.student.afterschool_class.sessions.last.overall_assignment_completion_percentage %>");

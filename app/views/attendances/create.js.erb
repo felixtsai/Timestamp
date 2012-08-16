@@ -1,1 +1,4 @@
 $("a[student_id=<%=j @student.id.to_s %>]").parent().replaceWith("<%=j render :partial => 'sessions/sign_in', :locals => {:session => @session, :student => @student} %>");
+
+$("#attendance-percent").html("<%= @student.afterschool_class.sessions.last.overall_attendance_percent %>");
+
