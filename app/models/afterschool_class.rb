@@ -2,7 +2,7 @@ class AfterschoolClass < ActiveRecord::Base
   attr_accessible :grade_level_id, :teachers_attributes, :students_attributes
 
   has_many :students, :inverse_of => :afterschool_class
-  has_many :teachers, :inverse_of => :afterschool_class
+  has_many :teachers, :inverse_of => :afterschool_class, :dependent => :destroy
   belongs_to :grade_level
   has_many :sessions, :dependent => :destroy
 
