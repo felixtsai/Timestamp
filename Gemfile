@@ -21,7 +21,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'jazz_hands'
   gem 'quiet_assets'
   gem 'guard'
   gem 'guard-spork'
