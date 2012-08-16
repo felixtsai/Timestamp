@@ -31,17 +31,6 @@ class Session < ActiveRecord::Base
 
   def overall_assignment_completion_percentage
     student_assignments.count != 0 ? "#{(student_assignments.completed.count.to_f / student_assignments.count.to_f * 100).to_i}%" : "N/A"
-
-  def unique_assignments
-    assignments.count
-  end
-
-  def total_assignments
-    afterschool_class.students.count * unique_assignments
-  end
-
-  def overall_assignment_completion_percentage
-    total_assignments != 0 ? "#{(completed_assignments.to_f / total_assignments.to_f*100).to_i}%" : "N/A"
   end
 
   def subject_completion_percentage(subject)
