@@ -29,5 +29,10 @@ class SessionsController < ApplicationController
   end
 
   def index
+    @sessions = Session.today
+    respond_to do |format|
+      format.csv {send_data @sessions.to_csv }
+      format.xlsx
+    end
   end
 end

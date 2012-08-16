@@ -33,6 +33,16 @@
               <li><%= link_to "Create Class", new_afterschool_class_path %></li>
             </ul>
           </li>
+           <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Export
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Daily Session Stats", sessions_path(format: "xlsx") %></li>
+                <li><%= link_to "Assignments", assignments_path(format: "xlsx") %></li>
+              </ul>
+            </li>
         </ul>
 
         <ul class="nav pull-right">

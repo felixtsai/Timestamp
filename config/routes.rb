@@ -16,6 +16,9 @@ Timestamp::Application.routes.draw do
     resources :sessions
   end
 
+  resources :sessions, only: :index
+
+
   match "/assignments/grade/:grade_level_id" => 'assignments#index'
 
 

@@ -8,6 +8,7 @@ class Session < ActiveRecord::Base
   has_many :student_assignments, through: :roster_students
   has_one :teacher, :through => :afterschool_class
 
+  scope :today, where("date = ?", Date.today)
 
   def session_student_count
     students.count
@@ -39,4 +40,12 @@ class Session < ActiveRecord::Base
     total != 0 ? "#{(completed/total * 100).to_i}%" : "N/A"
   end
 
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |assignment|
+        csv << assignment.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

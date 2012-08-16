@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sessions">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Class</Data></Cell>
+        <Cell><Data ss:Type="String">Overall HW %</Data></Cell>
+        <Cell><Data ss:Type="String">Math HW %</Data></Cell>
+        <Cell><Data ss:Type="String">ELA HW %</Data></Cell>
+        <Cell><Data ss:Type="String">SS HW %</Data></Cell>
+        <Cell><Data ss:Type="String">Science HW %</Data></Cell>
+        <Cell><Data ss:Type="String">Extra Credit %</Data></Cell>
+        <Cell><Data ss:Type="String">Attendance %</Data></Cell>
+        <Cell><Data ss:Type="String">Ontime</Data></Cell>
+        <Cell><Data ss:Type="String">Late</Data></Cell>
+        <Cell><Data ss:Type="String">Absent</Data></Cell>
+      </Row>
+    <% @sessions.each do |session| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= session.afterschool_class.teachers.first.first_name + " " + session.afterschool_class.teachers.first.last_name + " - " + session.afterschool_class.grade_level.year %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.overall_assignment_completion_percentage %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.subject_completion_percentage("Math") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.subject_completion_percentage("English Language Arts (ELA)") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.subject_completion_percentage("Social Studies") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.subject_completion_percentage("Science") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.subject_completion_percentage("Extra Credit") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.overall_attendance_percent %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.on_time_count %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.late_count %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= session.absent_count %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
