@@ -4,6 +4,7 @@ class Assignment < ActiveRecord::Base
   has_many :student_assignments, :dependent => :destroy
   belongs_to :subject
   belongs_to :grade_level
+  delegate :subject_name, to: :subject
 
   after_create :assign_student_assignments
 
