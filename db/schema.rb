@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813173500) do
+ActiveRecord::Schema.define(:version => 20120817003836) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20120813173500) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "afterschool_classes", ["grade_level_id"], :name => "index_afterschool_classes_on_grade_level_id"
+
   create_table "assignments", :force => true do |t|
     t.string   "description"
     t.date     "due_date"
@@ -47,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20120813173500) do
     t.integer  "grade_level_id"
   end
 
+  add_index "assignments", ["grade_level_id"], :name => "index_assignments_on_grade_level_id"
+  add_index "assignments", ["subject_id"], :name => "index_assignments_on_subject_id"
+
   create_table "attendances", :force => true do |t|
     t.integer  "session_id"
     t.integer  "student_id"
@@ -54,6 +59,9 @@ ActiveRecord::Schema.define(:version => 20120813173500) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "attendances", ["session_id"], :name => "index_attendances_on_session_id"
+  add_index "attendances", ["student_id"], :name => "index_attendances_on_student_id"
 
   create_table "grade_levels", :force => true do |t|
     t.string   "year"
@@ -69,6 +77,8 @@ ActiveRecord::Schema.define(:version => 20120813173500) do
     t.datetime "updated_at",           :null => false
   end
 
+  add_index "sessions", ["afterschool_class_id"], :name => "index_sessions_on_afterschool_class_id"
+
   create_table "student_assignments", :force => true do |t|
     t.datetime "completion_time"
     t.integer  "student_id"
@@ -77,6 +87,9 @@ ActiveRecord::Schema.define(:version => 20120813173500) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "student_assignments", ["assignment_id"], :name => "index_student_assignments_on_assignment_id"
+  add_index "student_assignments", ["student_id"], :name => "index_student_assignments_on_student_id"
+
   create_table "students", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -84,6 +97,8 @@ ActiveRecord::Schema.define(:version => 20120813173500) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
   end
+
+  add_index "students", ["afterschool_class_id"], :name => "index_students_on_afterschool_class_id"
 
   create_table "subjects", :force => true do |t|
     t.string   "name"
@@ -99,5 +114,7 @@ ActiveRecord::Schema.define(:version => 20120813173500) do
     t.integer  "afterschool_class_id"
     t.string   "salutation"
   end
+
+  add_index "teachers", ["afterschool_class_id"], :name => "index_teachers_on_afterschool_class_id"
 
 end
