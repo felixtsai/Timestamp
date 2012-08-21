@@ -1,3 +1,7 @@
-Timestamp
+OVERVIEW
 
-It works.
+Timestampz is a homework tracking system for the Citizen Schools afterschool program at Cesar Chavez Academy in East Palo Alto. We worked with Curtis Monette, the adminstrator of the afterschool program.
+
+The homework tracking system allows the first shift teachers (the day school) to enter in assignments by grade. Those assignments automatically populate for the afterschool program. In the afterschool program, teachers can start class on their computers and then check in students as well as assignments completed for each student. The program tracks all the class stats and provides that information by class, grade, and student for the entire program.
+
+With Timestampz, Citizen Schools has a daily record of attendance and assignment completion. They can track student and teacher progress and give feedback to the first shift teachers about assignment completion. Since the stats update in real time, teachers can also use the information in competitions between classes to motivate students to finish their work. Potential new features include more indepth reporting and better class comparison features.
