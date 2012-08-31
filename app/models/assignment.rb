@@ -15,8 +15,10 @@ class Assignment < ActiveRecord::Base
 
 
   scope :by_current, where('due_date >= ?', Date.today)
-  scope :by_grade, lambda { |grade_level_id| where('grade_level_id = ?', grade_level_id) }
+  #scope :by_grade, lambda { |grade_level_id| where('grade_level_id = ?', grade_level_id) }
+  scope :by_grade, lambda { |grade_level_id| where(grade_level_id: grade_level_id) }
   scope :by_subject, lambda { |subject| joins(:subject).where('name = ?', subject) }
+  #TODO: What does this do differently from has_many :student_assignments
   scope :for_students, joins(:student_assignments)
   scope :completed, for_students.where("student_assignments.completion_time IS NOT NULL")
 

@@ -18,11 +18,7 @@ class GradeLevel < ActiveRecord::Base
   end
 
   def total_student_count
-    count = 0
-    afterschool_classes.each do |afterschool_class|
-      count += afterschool_class.students.length
-    end
-    count
+    students.count
   end
 
   def total_attendances

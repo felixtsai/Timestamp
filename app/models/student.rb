@@ -24,9 +24,12 @@ class Student < ActiveRecord::Base
   end
 
   def total_outstanding_assignments
-    self.student_assignments.select { |s_a| s_a.due_date >= Date.today }
+    student_assignments.joins(:assignment).where('due_date >= ?', Date.today)
+    #self.student_assignments.select { |s_a| s_a.due_date >= Date.today }
   end
 
+  # TODO: You don't need this, you can just do total_outstanding_assignments.count
+  #
   def total_outstanding_assignments_count
     total_outstanding_assignments.length
   end
