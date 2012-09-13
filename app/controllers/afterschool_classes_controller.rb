@@ -3,6 +3,7 @@ class AfterschoolClassesController < ApplicationController
     @afterschool_classes = AfterschoolClass.find(:all)
     @session = Session.new
     @grade_levels = GradeLevel.all
+    @afterschool_class_by_grade_teacher = AfterschoolClass.afterschool_class_by_grade_teacher
   end
 
   def new
@@ -26,7 +27,7 @@ class AfterschoolClassesController < ApplicationController
     @afterschool_class = AfterschoolClass.find(params[:id])
   end
 
-  def edit
+  def edits
     @afterschool_class = AfterschoolClass.find(params[:id])
   end
 

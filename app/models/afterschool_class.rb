@@ -31,6 +31,14 @@ class AfterschoolClass < ActiveRecord::Base
   def student_count
     students.count
   end
+
+  def self.afterschool_class_by_grade_teacher
+    sorted_afterschool_classes = []
+    GradeLevel.all.each do |grade|
+      sorted_afterschool_classes += grade.afterschool_classes.sort {|x,y| x.teachers.first.last_name <=> y.teachers.first.last_name}
+    end
+  return sorted_afterschool_classes    
+  end
 end
 
 

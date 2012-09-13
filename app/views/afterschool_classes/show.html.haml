@@ -13,7 +13,7 @@
         %span.label.label-important
           %i.icon-trash
           =link_to "delete class", afterschool_class_path(@afterschool_class), method: :delete, data: {confirm: "Are you sure?"}
-  -@afterschool_class.students.each do |student|
+  -@afterschool_class.students.sort {|x,y| x.last_name <=> y.last_name}.each do |student|
     %tr
       %td=student.first_name + " " + student.last_name
       %td

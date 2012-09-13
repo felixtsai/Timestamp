@@ -52,7 +52,7 @@
 .row
   .span5.roster
     %h3 Student Roster
-    %table.table.table-striped#student_table= render :partial => 'student', :collection => @session.afterschool_class.students
+    %table.table.table-striped#student_table= render :partial => 'student', :collection => @session.afterschool_class.students.sort {|x,y| x.last_name <=> y.last_name}
   .span5.student-assignments
 
     %br
