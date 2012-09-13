@@ -10,5 +10,5 @@
     = builder.text_field :last_name, :placeholder => "Last Name"
 %br
 = f.label :grade, "Select Grade Level"
-= f.collection_select(:grade_level_id, GradeLevel.find(:all), :id, :year, :prompt => true)
+= f.collection_select(:grade_level_id, GradeLevel.order_by_year, :id, :year, :prompt => true)
 %br

@@ -2,7 +2,7 @@ class AfterschoolClassesController < ApplicationController
   def index
     @afterschool_classes = AfterschoolClass.find(:all)
     @session = Session.new
-    @grade_levels = GradeLevel.all
+    @grade_levels = GradeLevel.order_by_year
     @afterschool_class_by_grade_teacher = AfterschoolClass.afterschool_class_by_grade_teacher
   end
 

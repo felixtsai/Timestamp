@@ -11,7 +11,7 @@
           -@errors.each do |msg|
             %li= msg
 
-    = collection_select(:assignment, :grade_level_id, GradeLevel.find(:all), :id, :year, :prompt => "Select grade level")
+    = collection_select(:assignment, :grade_level_id, GradeLevel.order_by_year, :id, :year, :prompt => "Select grade level")
     %br
     = collection_select(:assignment, :subject_id, Subject.find(:all), :id, :name, :prompt => "Select subject")
     %br
