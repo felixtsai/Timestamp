@@ -27,7 +27,7 @@ class AfterschoolClassesController < ApplicationController
     @afterschool_class = AfterschoolClass.find(params[:id])
   end
 
-  def edits
+  def edit
     @afterschool_class = AfterschoolClass.find(params[:id])
   end
 

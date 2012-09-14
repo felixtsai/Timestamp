@@ -27,7 +27,7 @@ class Session < ActiveRecord::Base
   end
 
   def overall_attendance_percent
-    "#{((attendances.count.to_f) / (afterschool_class.students.count.to_f)*100).to_i}%"
+    afterschool_class.students.count != 0 ? "#{((attendances.count.to_f) / (afterschool_class.students.count.to_f)*100).to_i}%" :"N/A"
   end
 
   def overall_assignment_completion_percentage
