@@ -5,9 +5,11 @@ class AfterschoolClass < ActiveRecord::Base
   has_many :teachers, :inverse_of => :afterschool_class, :dependent => :destroy
   belongs_to :grade_level
   has_many :sessions, :dependent => :destroy
+  belongs_to :semester
 
   validates_presence_of :grade_level, :teachers
   validate :teacher_existence
+  # validates_presence_of :
 
   has_many :assignments, :through => :grade_level
 
