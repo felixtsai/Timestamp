@@ -9,7 +9,6 @@ class AfterschoolClass < ActiveRecord::Base
 
   validates_presence_of :grade_level, :teachers
   validate :teacher_existence
-  # validates_presence_of :
 
   has_many :assignments, :through => :grade_level
 

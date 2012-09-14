@@ -1,4 +1,7 @@
-class IndexController < ApplicationController
+class SemestersController < ApplicationController
+  def index
+  end
+
   def show
   end
 

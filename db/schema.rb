@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914000547) do
+ActiveRecord::Schema.define(:version => 20120914004314) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20120914000547) do
     t.integer  "grade_level_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "semester_id"
   end
 
   add_index "afterschool_classes", ["grade_level_id"], :name => "index_afterschool_classes_on_grade_level_id"

@@ -1,15 +1,4 @@
 Timestamp::Application.routes.draw do
-  get "index/show"
-
-  get "index/new"
-
-  get "index/create"
-
-  get "index/edit"
-
-  get "index/update"
-
-  get "index/destroy"
 
   root to: 'afterschool_classes#index'
 
@@ -29,6 +18,8 @@ Timestamp::Application.routes.draw do
   end
 
   resources :sessions, only: :index
+  
+  resources :semesters
 
 
   match "/assignments/grade/:grade_level_id" => 'assignments#index'
