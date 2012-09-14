@@ -1,4 +1,5 @@
 Timestamp::Application.routes.draw do
+
   root to: 'afterschool_classes#index'
 
   devise_for :admins
@@ -17,6 +18,8 @@ Timestamp::Application.routes.draw do
   end
 
   resources :sessions, only: :index
+  
+  resources :semesters
 
 
   match "/assignments/grade/:grade_level_id" => 'assignments#index'
