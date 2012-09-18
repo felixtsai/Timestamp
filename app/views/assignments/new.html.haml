@@ -27,7 +27,7 @@
     %br
 
     = label_tag("Due Date (default is tomorrow)")
-    = text_field_tag("assignment[0][due_date]", Date.today + 1.day, :id => "assignment_due_date_0")
+    = text_field_tag("assignment[0][due_date]", Time.zone.now.to_date + 1.day, :id => "assignment_due_date_0")
     %br
     %br
     = submit_tag("Create Assignment", :class => "btn btn-large btn-success")
