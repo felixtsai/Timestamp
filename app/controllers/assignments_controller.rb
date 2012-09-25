@@ -35,7 +35,7 @@ class AssignmentsController < ApplicationController
     else
       Assignment.save_all(@assignments)
       flash[:success] = "Assignments added"
-      redirect_to assignments_path
+      redirect_to new_assignment_path
     end
   end
 
