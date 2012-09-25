@@ -1,5 +1,5 @@
 Fabricator(:session) do
   afterschool_class_id Fabricate(:afterschool_class).id
-  date                 Time.now.to_date
-  start_time           Time.now
+  date                 Time.zone.now.to_date
+  start_time           Time.zone.now
 end

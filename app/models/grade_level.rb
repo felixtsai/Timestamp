@@ -58,7 +58,7 @@ class GradeLevel < ActiveRecord::Base
   end
 
   def current_sessions
-    sessions.find_all_by_date(Date.today)
+    sessions.find_all_by_date(Time.zone.now.to_date)
   end
 
   def overall_assignment_completion_percentage

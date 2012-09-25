@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    @session = Session.create(afterschool_class_id: params[:afterschool_class_id], date: Time.now.to_date, start_time: Time.now )
+    @session = Session.create(afterschool_class_id: params[:afterschool_class_id], date: Time.zone.now.to_date, start_time: Time.zone.now )
     redirect_to afterschool_class_session_path(@session.afterschool_class_id, @session)
   end
 

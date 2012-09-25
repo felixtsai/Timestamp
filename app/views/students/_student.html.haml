@@ -15,7 +15,7 @@
               = link_to "Complete", student_assignment_path(s_a, :completion_time => "NULL"), method: :put, :remote => true
           -else
             %span.label.label-important
-              = link_to "Incomplete", student_assignment_path(s_a, :completion_time => Time.now), method: :put, :remote => true
+              = link_to "Incomplete", student_assignment_path(s_a, :completion_time => Time.zone.now), method: :put, :remote => true
         %td
           = s_a.assignment.subject.name
         %td

@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   $('.add-assignment-form a').on('click', function () {
 
-    $(this).after("<input id='assignment_due_date_"+count+"' id='assignment_"+count+"_due_date' name='assignment["+count+"][due_date]' type='text' value=<%=Date.today + 1.day%>>")
+    $(this).after("<input id='assignment_due_date_"+count+"' id='assignment_"+count+"_due_date' name='assignment["+count+"][due_date]' type='text' value=<%=Time.zone.now.to_date + 1.day%>>")
     $(this).after("<label for='Due_Date__default_is_tomorrow_'>Due date (default is tomorrow)</label>")
     $(this).after("<input id='assignment_"+count+"_description' name='assignment["+count+"][description]'   placeholder='Enter new assignment' type='text'>")
     $(this).after("</br><h4>Assignment</h4>")

@@ -26,7 +26,7 @@ class AfterschoolClass < ActiveRecord::Base
   end
 
   def current_session?
-    sessions.last.date == Time.now.to_date
+    sessions.last.date == Time.zone.now.to_date
   end
 
   def student_count

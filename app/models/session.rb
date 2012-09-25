@@ -8,7 +8,7 @@ class Session < ActiveRecord::Base
   has_many :student_assignments, through: :roster_students
   has_one :teacher, :through => :afterschool_class
 
-  scope :today, where("date = ?", Date.today)
+  scope :today, where("date = ?", Time.zone.now.to_date)
 
   def session_student_count
     students.count

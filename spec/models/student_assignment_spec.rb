@@ -10,7 +10,7 @@ describe StudentAssignment do
   #   @teacher = Teacher.create(salutation => "Mr.", first_name =>"smirla", last_name =>"poqer")
   #   @teacher.@afterschool_class = AfterschoolClass.create(grade_level_id: @grade_level.id)
   #   @student = Student.create(first_name: 'Sally', last_name: 'Ride', afterschool_class_id: @afterschool_class.id)
-  #   @session = @afterschool_class.sessions.create( date: Time.now.to_date, start_time: Time.now)
+  #   @session = @afterschool_class.sessions.create( date: Time.zone.now.to_date, start_time: Time.zone.now)
   #   @attendance = Attendance.create(session_id: @session.id, student_id: @student.id)
   #   @student.find_session_attendance(@session.id).should_not be_nil
   # end
