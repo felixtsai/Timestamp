@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-GradeLevel.find_or_create_by_year("6th Grade - A")
-GradeLevel.find_or_create_by_year("6th Grade - B")
+GradeLevel.find_or_create_by_year("6th Grade")
+GradeLevel.find_or_create_by_year("6th Grade - DI")
 GradeLevel.find_or_create_by_year("7th Grade")
 GradeLevel.find_or_create_by_year("8th Grade")
 

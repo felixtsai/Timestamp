@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914004314) do
+ActiveRecord::Schema.define(:version => 20120926183803) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120914004314) do
     t.integer  "assignment_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "status"
   end
 
   add_index "student_assignments", ["assignment_id"], :name => "index_student_assignments_on_assignment_id"

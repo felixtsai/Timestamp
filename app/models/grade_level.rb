@@ -6,7 +6,7 @@ class GradeLevel < ActiveRecord::Base
   has_many :assignments
 
   validates_uniqueness_of :year
-  validates_inclusion_of :year, :in => ["6th Grade - A", "6th Grade - B" , "7th Grade", "8th Grade"]
+  validates_inclusion_of :year, :in => ["6th Grade", "6th Grade - DI" , "7th Grade", "8th Grade"]
   #Do not ever change the drop down menu for the grade because there is no vaidation of inclusion.
 
   def self.order_by_year

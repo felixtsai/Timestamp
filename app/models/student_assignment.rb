@@ -1,5 +1,5 @@
   class StudentAssignment < ActiveRecord::Base
-  attr_accessible :assignment_id, :completion_time, :student_id
+  attr_accessible :assignment_id, :completion_time, :student_id, :status
   belongs_to :student
   belongs_to :assignment
   delegate :due_date, to: :assignment

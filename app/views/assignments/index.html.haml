@@ -11,13 +11,13 @@
       %th % Complete
     %tr
       %th.grade{:colspan => 6}
-        6th Grade - A
-  = render :partial => 'assignment', :collection => @assignments.select {|a| a.grade_level.year == "6th Grade - A"}
+        6th Grade
+  = render :partial => 'assignment', :collection => @assignments.select {|a| a.grade_level.year == "6th Grade"}
   %thead
     %tr
       %th.grade{:colspan => 6}
-        6th Grade - B
-  = render :partial => 'assignment', :collection => @assignments.select {|a| a.grade_level.year == "6th Grade - B"}
+        6th Grade - DI
+  = render :partial => 'assignment', :collection => @assignments.select {|a| a.grade_level.year == "6th Grade - DI"}
   %thead
     %tr
       %th.grade{:colspan => 6}
