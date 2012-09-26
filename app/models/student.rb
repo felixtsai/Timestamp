@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
   after_create :create_current_assignments
 
   def completed_assignments
-    self.student_assignments.select { |s_a| s_a.completion_time && s_a.due_date >= Time.zone.now.to_date }
+    self.student_assignments.select { |s_a| s_a.completion_time && s_a.due_date > Time.zone.now.to_date }
     #day's completed assignments
   end
 
@@ -25,7 +25,7 @@ class Student < ActiveRecord::Base
 
   def total_outstanding_assignments
     student_assignments.joins(:assignment).where('due_date > ?', Time.zone.now.to_date)
-    # self.student_assignments.select { |s_a| s_a.due_date >= Time.zone.now.to_date }
+    # self.student_assignments.select { |s_a| s_a.due_date > Time.zone.now.to_date }
   end
 
   # TODO: You don't need this, you can just do total_outstanding_assignments.count
@@ -56,7 +56,7 @@ class Student < ActiveRecord::Base
 
   def create_current_assignments
     grade_level.assignments.each do |assignment|
-      student_assignments.create(assignment_id: assignment.id) if assignment.due_date >= Time.zone.now.to_date
+      student_assignments.create(assignment_id: assignment.id) if assignment.due_date > Time.zone.now.to_date
     end
   end
 end
