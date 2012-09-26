@@ -14,7 +14,7 @@ class Assignment < ActiveRecord::Base
   validates_presence_of :due_date
 
 
-  scope :by_current, where('due_date >= ?', Time.zone.now.to_date)
+  scope :by_current, where('due_date > ?', Time.zone.now.to_date)
   #scope :by_grade, lambda { |grade_level_id| where('grade_level_id = ?', grade_level_id) }
   scope :by_grade, lambda { |grade_level_id| where(grade_level_id: grade_level_id) }
   scope :by_subject, lambda { |subject| joins(:subject).where('name = ?', subject) }

@@ -7,7 +7,7 @@ Timestamp::Application.routes.draw do
   resources :attendances, except: [:new, :edit, :index, :show]
 
   resources :students, only: [:show, :update]
-  resources :student_assignments, only: :update
+  resources :student_assignments, only: [:update, :destroy]
   resources :assignments
 
   resources :students, only: [:destroy, :edit, :update]

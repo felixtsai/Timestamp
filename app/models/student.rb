@@ -24,7 +24,7 @@ class Student < ActiveRecord::Base
   end
 
   def total_outstanding_assignments
-    student_assignments.joins(:assignment).where('due_date >= ?', Time.zone.now.to_date)
+    student_assignments.joins(:assignment).where('due_date > ?', Time.zone.now.to_date)
     # self.student_assignments.select { |s_a| s_a.due_date >= Time.zone.now.to_date }
   end
 
