@@ -2,7 +2,7 @@
   %td=assignment.description
   %td=assignment.due_date
   %td=assignment.grade_level.year
-  %td="#{assignment.completion_percent}%"
+  %td="#{assignment.completion_percent.round(2)}%"
   %td
     %span.label.label-info
       %i.icon-edit

@@ -10,8 +10,8 @@ class Session < ActiveRecord::Base
 
   scope :today, where("date = ?", Time.zone.now.to_date)
 
-#Write custom validation to make sure only one session of a class can be created per day.""
-  # validates(:date, :uniqueness => true, :message => "only one class can be created per day")
+  # validates_with UniqueClassValidator
+
 
   def session_student_count
     students.count
