@@ -45,9 +45,21 @@ class Session < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |assignment|
-        csv << assignment.attributes.values_at(*column_names)
+      csv << [ "Session","Overall Assignment %", "Math", "ELA", "SS", "Science","EC", "Attendance %", "On Time #", "Late #", "Absent #"]
+      all.each do |session|
+        csv << [
+          session.afterschool_class.grade_level.year + " " + session.afterschool_class.teachers.first.first_name + " " + session.afterschool_class.teachers.first.last_name,
+          session.overall_assignment_completion_percentage,
+          session.subject_completion_percentage("Math"),
+          session.subject_completion_percentage("English Language Arts (ELA)"),
+          session.subject_completion_percentage("Social Studies"),
+          session.subject_completion_percentage("Science"),
+          session.subject_completion_percentage("Extra Credit"),
+          session.overall_attendance_percent,
+          session.on_time_count,
+          session.late_count,
+          session.absent_count
+        ]
       end
     end
   end

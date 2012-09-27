@@ -24,9 +24,21 @@ class Assignment < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |assignment|
-        csv << assignment.attributes.values_at(*column_names)
+      csv << [ "Session","Overall Assignment %", "Math", "ELA", "SS", "Science","EC", "Attendance %", "On Time #", "Late #", "Absent #"]
+      all.each do |session|
+        csv << [
+          "Hello",
+          "Hello",
+          "Hello",
+          "Hello",
+          "Hello",
+          "Hello",
+          "Hello",
+          "Hello",
+          "Hello",
+          "Hello",
+          "hello"
+        ]
       end
     end
   end
