@@ -11,7 +11,7 @@ class Session < ActiveRecord::Base
   scope :today, where("date = ?", Time.zone.now.to_date)
 
   # validates_with UniqueClassValidator
-
+  validate :unique_class_validator
 
   def session_student_count
     students.count
@@ -49,6 +49,14 @@ class Session < ActiveRecord::Base
       all.each do |assignment|
         csv << assignment.attributes.values_at(*column_names)
       end
+    end
+  end
+
+  private
+
+  def unique_class_validator
+    if Session.today.collect {|session| session.afterschool_class_id}.include? afterschool_class_id
+      errors[:base] << "This class is already in session"
     end
   end
 end

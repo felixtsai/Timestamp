@@ -22,7 +22,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'quiet_assets'
-  gem 'guard'
+  gem 'spork'
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'fabrication'
@@ -30,4 +30,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'simplecov', :require => false
+  gem 'rb-inotify'
+  gem 'libnotify'
 end
