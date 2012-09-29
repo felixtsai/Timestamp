@@ -15,7 +15,7 @@
             = report_date.strftime("%A, %b %d, %Y") 
           %th
             %span.label.label-success
-              =link_to "Show Report", sessions_path(date: report_date, format: "csv")
+              =link_to "Export Report", sessions_path(date: report_date, format: "csv")
         - report_date += 1
         - page_no += 1
 
