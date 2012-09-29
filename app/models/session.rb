@@ -46,6 +46,7 @@ class Session < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
+      csv << [self.first.date.strftime("%A, %B %d, %Y")]
       csv << [ "Session","Overall Assignment %", "Math", "ELA", "SS", "Science","EC", "Attendance %", "On Time #", "Late #", "Absent #"]
       all.each do |session|
         csv << [
