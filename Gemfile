@@ -30,6 +30,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'simplecov', :require => false
-  # gem 'rb-inotify'
-  # gem 'libnotify'
+  gem 'rb-inotify'
+  gem 'libnotify'
 end

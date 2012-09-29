@@ -1,0 +1,22 @@
+%h1 Reports
+%ul.nav.nav-list
+  %li.divider
+%table.table.table-striped#reports_table
+  %thead
+    %tr
+      %th Date
+  %tbody
+    - report_date = @start_date
+    - page_no = 1
+    - while report_date != Time.zone.now.to_date + 1
+      %tr
+        - if (report_date.strftime("%A") != "Saturday") and (report_date.strftime("%A") != "Sunday")
+          %th
+            = report_date.strftime("%A, %b %d, %Y") 
+          %th
+            %span.label.label-success
+              =link_to "Show Report", sessions_path(date: report_date, format: "csv")
+        - report_date += 1
+        - page_no += 1
+
+

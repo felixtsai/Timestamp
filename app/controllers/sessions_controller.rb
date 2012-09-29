@@ -32,7 +32,8 @@ class SessionsController < ApplicationController
   end
 
   def index
-    @sessions = Session.today
+    # @sessions = Session.today
+    @sessions = Session.where("date = ?", params[:date])
     respond_to do |format|
       format.csv {send_data @sessions.to_csv }
       format.xlsx

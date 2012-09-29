@@ -14,6 +14,7 @@ class Session < ActiveRecord::Base
   validate :unique_class_validator
 
   def session_student_count
+    #students in attendance (either on time or late)
     students.count
   end
 
