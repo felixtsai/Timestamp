@@ -12,7 +12,7 @@ class Admin < ActiveRecord::Base
   before_create :limit_admin_roles
 
   #
-  #
+  # Why is this in here?
   def limit_admin_roles
     if Admin.all.count > 0
       flash[:error] = "Too many admins"
