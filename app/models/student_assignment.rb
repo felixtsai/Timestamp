@@ -9,4 +9,7 @@ class StudentAssignment < ActiveRecord::Base
   scope :completed, where("completion_time IS NOT NULL")
   scope :by_current, joins(:assignment).where('assignments.due_date > ?', Time.zone.now.to_date)
 
+  #Write validation so you cannot create two student-assignments for the same assigment for
+  # the same student.
+
 end

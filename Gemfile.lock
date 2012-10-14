@@ -98,7 +98,6 @@ GEM
     less-rails (2.2.3)
       actionpack (>= 3.1)
       less (~> 2.2.0)
-    libnotify (0.7.3)
     libv8 (3.3.10.4)
     libwebsocket (0.1.5)
       addressable
@@ -138,8 +137,6 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (0.9.2.2)
-    rb-inotify (0.8.8)
-      ffi (>= 0.5.0)
     rdoc (3.12)
       json (~> 1.4)
     rspec (2.11.0)
@@ -221,11 +218,9 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   launchy
-  libnotify
   pg
   quiet_assets
   rails (= 3.2.6)
-  rb-inotify
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
