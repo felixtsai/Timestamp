@@ -13,7 +13,7 @@ class GradeLevel < ActiveRecord::Base
     order("year")
   end
 
-  def overall_attendance_percent
+  def overall_attendance_percent #daily stat
     if total_student_count == 0
       "N/A"
     else
@@ -25,7 +25,7 @@ class GradeLevel < ActiveRecord::Base
     students.count
   end
 
-  def total_attendances
+  def total_attendances #daily stat
     count = 0
     current_sessions.each do |session|
       count += session.attendances.length
