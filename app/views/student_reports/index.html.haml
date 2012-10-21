@@ -1,0 +1,15 @@
+%h1 Student Reports
+%ul.nav.nav-list
+  %li.divider
+%table.table.table-striped#student_reports_table 
+  %thead
+    %tr
+      %th Student
+  %tbody
+    - StudentReportsHelper.alphabetize(@students).each do |student|
+      %tr
+        %th 
+          = link_to "#{student.first_name} #{student.last_name}", student_report_path(student)
+        %th
+          %span.label.label-success
+            =link_to "Export Report"

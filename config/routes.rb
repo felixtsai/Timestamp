@@ -22,7 +22,7 @@ Timestamp::Application.routes.draw do
   resources :semesters
 
   resources :reports, only: [:index, :show]
-
+  resources :student_reports, only: [:index, :show]
 
   match "/assignments/grade/:grade_level_id" => 'assignments#index'
 

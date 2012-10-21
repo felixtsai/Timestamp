@@ -1,6 +1,6 @@
 $(".span5.student-assignments").html("<%=j render(:partial => '/students/student', :locals => {:student => @student_assignment.student }) %>");
 
-$(".badge[student_id='<%= @student_assignment.student.id %>']").html("<%= @student_assignment.student.remaining_outstanding_assignments_count %>");
+$(".badge[student_id='<%= @student_assignment.student.id %>']").html("<%= @student_assignment.student.outstanding_assignments_today_count %>");
 
 $("#<%=j @student_assignment.subject_name %>").html("<%= @student_assignment.student.afterschool_class.sessions.last.subject_completion_percentage(@student_assignment.subject_name) %>");
 

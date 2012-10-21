@@ -2,7 +2,7 @@
   %td
     = full_name(student)
     %span.badge.badge-important{ :student_id => student.id }
-      = student.remaining_outstanding_assignments_count
+      = student.outstanding_assignments_today_count
   %td
     - if !student.find_session_attendance(@session.id)
       = render partial: 'absent', locals: {student:student, session: @session}

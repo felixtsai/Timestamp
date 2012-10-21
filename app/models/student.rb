@@ -14,35 +14,31 @@ class Student < ActiveRecord::Base
 
   after_create :create_current_assignments
 
-  def completed_assignments
-    self.student_assignments.select { |s_a| s_a.completion_time && s_a.due_date > Time.zone.now.to_date }
-    #day's completed assignments
+  def completed_assignments_today_count
+    student_assignments.joins(:assignment).completed.where('due_date > ?', Time.zone.now.to_date).count
   end
 
-  def completed_assignments_count
-    completed_assignments.length
+  def completed_assignments_to_date_count
+    student_assignments.joins(:assignment).completed.count
   end
 
-  def total_outstanding_assignments
+  def all_assignments_today
     student_assignments.joins(:assignment).where('due_date > ?', Time.zone.now.to_date)
-    # self.student_assignments.select { |s_a| s_a.due_date > Time.zone.now.to_date }
   end
 
-  # TODO: You don't need this, you can just do total_outstanding_assignments.count
-  #
-  def total_outstanding_assignments_count
-    total_outstanding_assignments.length
+  def outstanding_assignments_to_date_count
+    student_assignments.joins(:assignment).where("student_assignments.completion_time IS NULL").count
   end
 
-  def remaining_outstanding_assignments_count
-    total_outstanding_assignments_count - completed_assignments_count
+  def outstanding_assignments_today_count
+    student_assignments.joins(:assignment).where("student_assignments.completion_time IS NULL AND due_date > ?", Time.zone.now.to_date).count
   end
 
   def assignment_completion_percentage
-    if total_outstanding_assignments_count == 0
+    if outstanding_assignments_today_count == 0
       return "--"
     else
-      (completed_assignments_count/total_outstanding_assignments.length.to_f).round(2)*100
+      (completed_assignments_today_count/all_assignments_today.length.to_f).round(2)*100
     end
   end
 

@@ -1,13 +1,13 @@
 %div
   %h3
-    = full_name(student)
+    = full_name(@student)
   %table.table.table-striped{ :cellpadding => "3", :cellspacing => "2" }
 
     %tr
       %th Status
       %th Subject
       %th Description
-    - student.all_assignments_today.each do |s_a|
+    - @student.all_assignments_today.each do |s_a|
       %tr
         %td
           -if s_a.completion_time          
