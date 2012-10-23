@@ -6,10 +6,10 @@
     %tr
       %th Student
   %tbody
-    - StudentReportsHelper.alphabetize(@students).each do |student|
+    - StudentReportsHelper.alphabetize_by_last_name(@students).each do |student|
       %tr
         %th 
           = link_to "#{student.first_name} #{student.last_name}", student_report_path(student)
-        %th
-          %span.label.label-success
-            =link_to "Export Report"
+        / %th
+        /   %span.label.label-success
+        /     =link_to "Export Report"

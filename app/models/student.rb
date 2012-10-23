@@ -26,6 +26,11 @@ class Student < ActiveRecord::Base
     student_assignments.joins(:assignment).where('due_date > ?', Time.zone.now.to_date)
   end
 
+  def all_assignments_by_due_date
+    s_as = student_assignments.includes(:assignment)
+    s_as.sort { |a,b| a.assignment.due_date <=> b. assignment.due_date }
+  end
+
   def outstanding_assignments_to_date_count
     student_assignments.joins(:assignment).where("student_assignments.completion_time IS NULL").count
   end
@@ -34,12 +39,16 @@ class Student < ActiveRecord::Base
     student_assignments.joins(:assignment).where("student_assignments.completion_time IS NULL AND due_date > ?", Time.zone.now.to_date).count
   end
 
-  def assignment_completion_percentage
+  def assignment_completion_percentage_today
     if outstanding_assignments_today_count == 0
       return "--"
     else
       (completed_assignments_today_count/all_assignments_today.length.to_f).round(2)*100
     end
+  end
+
+  def overall_assignment_completion_percentage
+    (completed_assignments_to_date_count/student_assignments.count.to_f).round(2)*100
   end
 
   def find_session_attendance(session_id)

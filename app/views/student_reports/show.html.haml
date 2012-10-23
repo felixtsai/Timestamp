@@ -1,27 +1,28 @@
 %div
   %h3
     = full_name(@student)
+  %h4
+    = "Overall Completion Percentage: #{@student.overall_assignment_completion_percentage}%"
+  %h4
+    = "Today's Completion Percentage: #{@student.assignment_completion_percentage_today}"
+  %br
   %table.table.table-striped{ :cellpadding => "3", :cellspacing => "2" }
 
     %tr
-      %th Status
-      %th Subject
-      %th Description
-    - @student.all_assignments_today.each do |s_a|
+      %th Assignment
+      %th Due Date
+      %th Complete
+    - @student.all_assignments_by_due_date.each do |s_a|
       %tr
+        %td
+          = s_a.assignment.description
+        %td
+          = s_a.assignment.due_date
         %td
           -if s_a.completion_time          
             %span.label.label-success
-              = link_to "Complete", student_assignment_path(s_a, :completion_time => "NULL"), method: :put, :remote => true
+              = "Complete"
           -else
             %span.label.label-important
-              = link_to "Incomplete", student_assignment_path(s_a, :completion_time => Time.zone.now), method: :put, :remote => true
-        %td
-          = s_a.assignment.subject.name
-        %td
-          = s_a.assignment.description
-        / %td
-        /   %span.label.label-important
-        /     = link_to "",student_assignment_path(s_a), :class => "icon-trash", method: :delete, data: {confirm: "Are you sure?"}, :remote => true
-
-
+              = "Incomplete"
+ 
