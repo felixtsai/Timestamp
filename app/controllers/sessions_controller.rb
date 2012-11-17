@@ -34,9 +34,14 @@ class SessionsController < ApplicationController
   def index
     # @sessions = Session.today
     @sessions = Session.where("date = ?", params[:date])
-    respond_to do |format|
-      format.csv {send_data @sessions.to_csv }
-      format.xlsx
+    unless @sessions.empty?
+      respond_to do |format|
+        format.csv {send_data @sessions.to_csv }
+        format.xlsx
+      end
+    else
+      flash[:notice] = "There were no classes this day."
+      redirect_to reports_path
     end
   end
 end
