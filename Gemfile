@@ -11,6 +11,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'client_side_validations'
 gem 'jquery-ui-rails'
+gem 'will_paginate'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

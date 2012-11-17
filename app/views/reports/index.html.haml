@@ -6,9 +6,9 @@
     %tr
       %th Date
   %tbody
-    - report_date = @start_date
+    - report_date = Time.zone.now.to_date
     - page_no = 1
-    - while report_date != Time.zone.now.to_date + 1
+    - while report_date != @start_date
       %tr
         - if (report_date.strftime("%A") != "Saturday") and (report_date.strftime("%A") != "Sunday")
           %th
@@ -16,7 +16,7 @@
           %th
             %span.label.label-success
               =link_to "Export Report", sessions_path(date: report_date, format: "csv")
-        - report_date += 1
+        - report_date -= 1
         - page_no += 1
 
 
