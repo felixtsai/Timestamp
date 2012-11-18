@@ -4,7 +4,7 @@ Timestamp::Application.routes.draw do
 
   devise_for :admins
 
-  resources :attendances, except: [:new, :edit, :index, :show]
+  resources :attendances, except: [:new, :edit, :index]
 
   resources :students, only: [:show, :update]
   resources :student_assignments, only: [:update, :destroy]

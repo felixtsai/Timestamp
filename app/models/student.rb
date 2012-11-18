@@ -64,4 +64,11 @@ class Student < ActiveRecord::Base
       student_assignments.create(assignment_id: assignment.id) if assignment.due_date > Time.zone.now.to_date
     end
   end
+
+  def on_time_percentage
+  end
+
+  def overall_attendance_percentage
+  end
+
 end

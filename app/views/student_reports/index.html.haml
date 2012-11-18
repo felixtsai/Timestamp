@@ -5,11 +5,16 @@
   %thead
     %tr
       %th Student
+      %th
   %tbody
     - StudentReportsHelper.alphabetize_by_last_name(@students).each do |student|
       %tr
         %th 
-          = link_to "#{student.first_name} #{student.last_name}", student_report_path(student)
+          = "#{student.first_name} #{student.last_name}"
+        %th
+          = link_to "Assignments", student_report_path(student), class: "btn btn-success btn-small"
+        %th
+          = link_to "Attendance", attendance_path(student.id), class: "btn btn-warning btn-small"
         / %th
         /   %span.label.label-success
         /     =link_to "Export Report"

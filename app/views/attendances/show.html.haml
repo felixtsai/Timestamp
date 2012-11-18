@@ -1,0 +1,32 @@
+%div
+  %h3
+    = full_name(@student)
+  %h4
+    = "Overall Ontime Percentage: #{@student.overall_assignment_completion_percentage}%"
+  %h4
+    = "Overall Attendance Percentage: #{@student.assignment_completion_percentage_today}"
+  %br
+  %table.table.table-striped{ :cellpadding => "3", :cellspacing => "2" }
+
+    %tr
+      %th Date
+      %th Status
+    - report_date = Time.zone.now.to_date
+    - i = 0
+    - while report_date != @start_date
+      %tr
+        %td
+          = report_date
+        %td
+          - if !@attendances[i].nil? && @attendances[i].date == report_date
+            - if @attendances[i].status == "On time"
+              %span.label.label-success
+                = @attendances[i].status
+            - if @attendances[i].status == "Late"
+              %span.label.label-important
+                = @attendances[i].status
+            - i += 1
+          - else
+            %span.label
+              Absent
+          - report_date -= 1

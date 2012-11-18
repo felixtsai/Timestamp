@@ -4,8 +4,11 @@ class Attendance < ActiveRecord::Base
   belongs_to :session
   before_create :log_status
 
+  delegate :date, to: :session
+
   scope :on_time, where("status = ?", 'On time')
   scope :late, where("status = ?", 'Late')
+  scope :by_date, order("created_at desc")
 
   def log_status
     if (Time.zone.now - self.session.start_time) > 5.minutes
