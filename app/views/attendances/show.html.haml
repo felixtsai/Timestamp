@@ -2,9 +2,9 @@
   %h3
     = full_name(@student)
   %h4
-    = "Overall Ontime Percentage: #{@student.overall_assignment_completion_percentage}%"
+    = "Overall On time Percentage: #{@student.on_time_percentage}%"
   %h4
-    = "Overall Attendance Percentage: #{@student.assignment_completion_percentage_today}"
+    = "Overall Attendance Percentage: #{@student.overall_attendance_percentage}%"
   %br
   %table.table.table-striped{ :cellpadding => "3", :cellspacing => "2" }
 
@@ -15,18 +15,19 @@
     - i = 0
     - while report_date != @start_date
       %tr
-        %td
-          = report_date
-        %td
-          - if !@attendances[i].nil? && @attendances[i].date == report_date
-            - if @attendances[i].status == "On time"
-              %span.label.label-success
-                = @attendances[i].status
-            - if @attendances[i].status == "Late"
-              %span.label.label-important
-                = @attendances[i].status
-            - i += 1
-          - else
-            %span.label
-              Absent
-          - report_date -= 1
+        - if (report_date.strftime("%A") != "Saturday") and (report_date.strftime("%A") != "Sunday")
+          %td
+            = report_date.strftime("%A, %b %d, %Y")
+          %td
+            - if !@attendances[i].nil? && @attendances[i].date == report_date
+              - if @attendances[i].status == "On time"
+                %span.label.label-success
+                  = @attendances[i].status
+              - if @attendances[i].status == "Late"
+                %span.label.label-important
+                  = @attendances[i].status
+              - i += 1
+            - else
+              %span.label
+                Absent
+        - report_date -= 1

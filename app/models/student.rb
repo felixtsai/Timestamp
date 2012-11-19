@@ -1,3 +1,4 @@
+
 class Student < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :afterschool_class_id, :student_assignments_attributes
 
@@ -43,12 +44,12 @@ class Student < ActiveRecord::Base
     if outstanding_assignments_today_count == 0
       return "--"
     else
-      (completed_assignments_today_count/all_assignments_today.length.to_f).round(2)*100
+      ((completed_assignments_today_count/all_assignments_today.length.to_f)*100).round(2)
     end
   end
 
   def overall_assignment_completion_percentage
-    (completed_assignments_to_date_count/student_assignments.count.to_f).round(2)*100
+    ((completed_assignments_to_date_count/student_assignments.count.to_f)*100).round(2)
   end
 
   def find_session_attendance(session_id)
@@ -66,9 +67,11 @@ class Student < ActiveRecord::Base
   end
 
   def on_time_percentage
+    ((attendances.where("status = ?", "On time").count/Attendance.attendance_count.to_f)*100).round(2)
   end
 
   def overall_attendance_percentage
+    ((attendances.count/Attendance.attendance_count.to_f)*100).round(2)
   end
 
 end
