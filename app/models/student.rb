@@ -67,11 +67,11 @@ class Student < ActiveRecord::Base
   end
 
   def on_time_percentage
-    ((attendances.where("status = ?", "On time").count/Attendance.attendance_count.to_f)*100).round(2)
+    ((attendances.where("status = ?", "On time").count/afterschool_class.sessions.count.to_f)*100).round(2)
   end
 
   def overall_attendance_percentage
-    ((attendances.count/Attendance.attendance_count.to_f)*100).round(2)
+    ((attendances.count/afterschool_class.sessions.count.to_f)*100).round(2)
   end
 
 end

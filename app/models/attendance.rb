@@ -19,7 +19,7 @@ class Attendance < ActiveRecord::Base
   end
 
   def self.attendance_count
-    @start_date = "2012-09-01".to_date
+    @start_date = "2012-09-16".to_date
     @days = []
     @start_date.upto(Time.zone.now.to_date) do |day|
       if (day.strftime("%A") != "Saturday") and (day.strftime("%A") != "Sunday")

@@ -7,20 +7,17 @@
     = "Overall Attendance Percentage: #{@student.overall_attendance_percentage}%"
   %br
   %table.table.table-striped{ :cellpadding => "3", :cellspacing => "2" }
-
     %tr
       %th Date
       %th Status
-    - report_date = Time.zone.now.to_date
     - i = 0
-    - while report_date != @start_date
+    - @sessions.each do |session|
       %tr
-        - if (report_date.strftime("%A") != "Saturday") and (report_date.strftime("%A") != "Sunday")
+        %td
+          = session.date
           %td
-            = report_date.strftime("%A, %b %d, %Y")
-          %td
-            - if !@attendances[i].nil? && @attendances[i].date == report_date
-              - if @attendances[i].status == "On time"
+            - if !@attendances[i].nil? && @attendances[i].date == session.date
+              -if @attendances[i].status == "On time"
                 %span.label.label-success
                   = @attendances[i].status
               - else
@@ -30,4 +27,3 @@
             - else
               %span.label
                 Absent
-        - report_date -= 1

@@ -21,6 +21,7 @@ class Assignment < ActiveRecord::Base
   #TODO: What does this do differently from has_many :student_assignments
   scope :for_students, joins(:student_assignments)
   scope :completed, for_students.where("student_assignments.completion_time IS NOT NULL")
+  scope :by_due_date, order(:due_date)
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

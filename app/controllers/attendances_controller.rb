@@ -11,9 +11,10 @@ class AttendancesController < ApplicationController
   end
 
   def show
-    @start_date = "2012-09-01".to_date
+    @start_date = "2012-09-16".to_date
     @student = Student.find(params[:id])
-    @attendances = @student.attendances
+    @sessions = @student.afterschool_class.sessions.by_date
+    @attendances = @student.attendances.by_date
   end
 
 

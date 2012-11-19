@@ -5,5 +5,6 @@ class StudentReportsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
+    @s_a = @student.all_assignments_by_due_date
   end
 end

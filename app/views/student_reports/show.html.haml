@@ -12,7 +12,7 @@
       %th Assignment
       %th Due Date
       %th Complete
-    - @student.all_assignments_by_due_date.each do |s_a|
+    - @s_a.each do |s_a|
       %tr
         %td
           = s_a.assignment.description

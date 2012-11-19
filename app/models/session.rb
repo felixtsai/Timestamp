@@ -9,6 +9,7 @@ class Session < ActiveRecord::Base
   has_one :teacher, :through => :afterschool_class
 
   scope :today, where("date = ?", Time.zone.now.to_date)
+  scope :by_date, order('date DESC')
 
   # validates_with UniqueClassValidator
   validate :unique_class_validator
