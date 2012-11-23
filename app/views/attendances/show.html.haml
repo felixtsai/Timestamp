@@ -24,6 +24,9 @@
                 %span.label.label-important
                   = @attendances[i].status
               - i += 1
+            - elsif !@attendances[i].nil? && @attendances[i].date < session.date
+              %span.label
+                Error
             - else
               %span.label
                 Absent
