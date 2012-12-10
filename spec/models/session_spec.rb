@@ -73,12 +73,12 @@ describe "Session stats" do
 
     it "should provide overall assignment completion percentage for the class" do
       @student1.student_assignments.first.update_attributes(:completion_time => Time.now)
-      @session.overall_assignment_completion_percentage.should == "10%"
+      @session.overall_assignment_completion_percentage.should == "12.5%"
     end
 
     it "should provide assignment completion percentage by subject" do
       @student1.student_assignments.first.update_attributes(:completion_time => Time.now)
-      @session.subject_completion_percentage(Subject.find(1).name).should == "20%"
+      @session.subject_completion_percentage(Subject.find(1).name).should == "25%"
     end
   end
 

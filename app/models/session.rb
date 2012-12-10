@@ -12,7 +12,7 @@ class Session < ActiveRecord::Base
   scope :by_date, order('date DESC')
 
   # validates_with UniqueClassValidator
-  validate :unique_class_validator
+  validate :unique_class_validator, on: :create
 
   def session_student_count
     #students in attendance (either on time or late)
@@ -32,16 +32,17 @@ class Session < ActiveRecord::Base
   end
 
   def overall_attendance_percent
-    afterschool_class.students.count != 0 ? "#{((attendances.count.to_f) / (afterschool_class.students.count.to_f)*100).to_i}%" :"N/A"
+    afterschool_class.students.count != 0 ? "#{((attendances.count.to_f) / (afterschool_class.students.count.to_f)*100).to_i}%" : "N/A"
   end
 
   def overall_assignment_completion_percentage
-    student_assignments.count != 0 ? "#{(student_assignments.completed.count.to_f / student_assignments.count.to_f * 100).to_i}%" : "N/A"
+    student_assignments.count != 0 ? "#{(student_assignments.completed.count.to_f / attendances.count.to_f * 100).to_i}%" : "N/A"
   end
 
   def subject_completion_percentage(subject)
     total = student_assignments.select{|sa| sa.subject_name == subject}.count.to_f
     completed = student_assignments.select{|sa| sa.subject_name == subject && sa.completion_time != nil}.count.to_f
+    completed = student_assignments.joins(:assignment).where(:subject )
     total != 0 ? "#{(completed/total * 100).to_i}%" : "N/A"
   end
 

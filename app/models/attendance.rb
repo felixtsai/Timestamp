@@ -6,6 +6,10 @@ class Attendance < ActiveRecord::Base
 
   delegate :date, to: :session
 
+  validates_presence_of :session_id, :student_id
+  validate :student_already_in_class_validator, on: :create
+  validate :student_class_validator, on: :create
+
   scope :on_time, where("status = ?", 'On time')
   scope :late, where("status = ?", 'Late')
   scope :by_date, order("created_at desc")
@@ -28,4 +32,19 @@ class Attendance < ActiveRecord::Base
     end
     @days.count
   end
+
+  def student_already_in_class_validator
+    class_attendance = Session.find(self.session_id).attendances
+    if class_attendance.find_by_student_id(self.student_id)
+      errors[:base] << "Student already checked in for this class."
+    end
+  end
+
+  def student_class_validator
+    student_sessions = Student.find(self.student_id).afterschool_class.sessions
+    unless student_sessions.find_by_id(self.session_id)
+      errors[:base] << "Student is not in this class."
+    end
+  end
+
 end
